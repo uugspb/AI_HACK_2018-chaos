@@ -10,7 +10,7 @@ public class FovTarget : MonoBehaviour {
 
     public enum TargetType
     {
-        PATROL,
-        AGENT
+        FOX,
+        DOG
     }
 }
