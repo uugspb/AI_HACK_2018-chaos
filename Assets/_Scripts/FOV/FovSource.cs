@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class FovSource : MonoBehaviour
 {
-
     public event Action<FovTarget, FovTarget> OnOpponentVisible;
 
     [SerializeField] private FovTarget _me;
