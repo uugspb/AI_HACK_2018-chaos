@@ -15,7 +15,8 @@ public class FoxAnimator : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		m_animator.SetFloat ("speed", m_agent.velocity.magnitude);
+        crouch = DeathStrandingManager.instance.IsCloseToKillingPoint(transform.position);
+        m_animator.SetFloat ("speed", m_agent.velocity.magnitude);
 		m_animator.SetBool ("crouching", crouch);
 	}
 }
