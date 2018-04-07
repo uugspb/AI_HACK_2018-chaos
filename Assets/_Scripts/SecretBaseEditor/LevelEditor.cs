@@ -105,6 +105,7 @@ public class LevelEditor : MonoBehaviour
                     else
                     {
                          SetInfo("Too close to other object");
+                         Refresh();
                     }
                }
                    
