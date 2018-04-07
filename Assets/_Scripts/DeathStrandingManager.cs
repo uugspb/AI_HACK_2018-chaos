@@ -49,7 +49,7 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
                     Destroy(killingPoint.modifier);
                     foxSurface.BuildNavMesh();
                     Fox.instance.ResetDestination();
-
+//
                 }
             }
 
