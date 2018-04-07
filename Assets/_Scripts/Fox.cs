@@ -35,7 +35,7 @@ public class Fox : Singleton<Fox>
         agent.Warp(startingPoint);
         agent.SetDestination(target.position);
     }
-
+[EditorButton]
     public void ResetDestination()
     {
         agent.SetDestination(target.position);
