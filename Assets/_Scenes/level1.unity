@@ -4037,15 +4037,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4112178592728408, guid: b176d86106c8e489cb11d56be0aef37b, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.9166055
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4112178592728408, guid: b176d86106c8e489cb11d56be0aef37b, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1.9166054
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4112178592728408, guid: b176d86106c8e489cb11d56be0aef37b, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.9166054
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b176d86106c8e489cb11d56be0aef37b, type: 2}
@@ -13691,6 +13691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d0aa290e0c754d88a88a1b3ac279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPositions: []
   target: {fileID: 1009607478}
   foxSurface: {fileID: 0}
 --- !u!195 &2093031003
