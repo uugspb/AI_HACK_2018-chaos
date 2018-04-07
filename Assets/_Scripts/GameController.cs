@@ -1,28 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController> {
 
-    //[SerializeField] private float _alarmDuration;
+    [SerializeField] private string _intro;
+    [SerializeField] private string _play;
+    [SerializeField] private string _score;
 
-    //private float _alarmCountDown;
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
-    //public void SetAlarm()
-    //{
-    //    _alarmCountDown = _alarmDuration;
-    //}
+    [EditorButton]
+    public void LoadIntro()
+    {
+        SceneManager.LoadScene(_intro);
+    }
 
-    //private void Update()
-    //{
-    //    _alarmCountDown -= Time.deltaTime;
+    [EditorButton]
+    public void LoadPlay()
+    {
+        SceneManager.LoadScene(_play);
+    }
 
-    //    if(_alarmCountDown <= 0)
-    //    {
-
-    //    }
-    //}
-
-
+    [EditorButton]
+    public void LoadScore()
+    {
+        SceneManager.LoadScene(_score);
+    }
 
 }
