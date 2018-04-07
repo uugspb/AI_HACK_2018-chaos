@@ -19,9 +19,6 @@ public class AlarmScript : MonoBehaviour {
 		{
 			PanicTime ();
 		}
-
-		if (Input.GetKeyDown (KeyCode.A))
-			AlarmActivate ();
 	}
 
 	public void AlarmActivate()
