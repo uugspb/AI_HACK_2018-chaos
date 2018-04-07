@@ -24,6 +24,13 @@ public class ShowFinishWindowScript : MonoBehaviour {
 	private int startPoints;
 	private int totalPoints;
 
+	[SerializeField] private int levelAward;
+	public int LevelAward {
+		get { return levelAward; }
+		set { levelAward = value; }
+	}
+
+
 	//PlayerPrefs.GetInt ("LevelAward") - сохраняем набранные очки сюда
 	// PlayerPrefs.GetInt ("Points"); - startPoints + ("LevelAward")
 
@@ -43,8 +50,8 @@ public class ShowFinishWindowScript : MonoBehaviour {
 
 	private void SetStartParams()
 	{
-		startPoints = 9;
-		totalPoints = PlayerPrefs.GetInt ("Points");
+		startPoints = 0;
+		totalPoints = startPoints + levelAward;
 
 		finishCanvas.transform.GetChild (0).GetChild (0).GetChild (0).GetComponent<Slider>().wholeNumbers = 
 			true;
@@ -111,7 +118,7 @@ public class ShowFinishWindowScript : MonoBehaviour {
 	void GetRecords()//каким то образом получаем все свои числа со временем ожидания для каждого
 	{
 		records.Add (new Record { Points = startPoints, InnerTimer = 2f, NextWaitTimer = 2f, infoIndex = 0 });
-		records.Add (new Record { Points = PlayerPrefs.GetInt ("LevelAward"), InnerTimer = 2f, NextWaitTimer = 2f, infoIndex = 1 });
+		records.Add (new Record { Points = levelAward, InnerTimer = 2f, NextWaitTimer = 2f, infoIndex = 1 });
 
 
 	}
