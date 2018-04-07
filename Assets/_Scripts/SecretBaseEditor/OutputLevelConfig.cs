@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class OutputLevelConfig
 {
-     public List<Vector2> CameraCoordinates = new List<Vector2>();
-     public List<Vector2> SentinelCoordinates = new List<Vector2>();
-     public List<Vector2> TargetCoordinates = new List<Vector2>();
-     public List<Vector3> CameraRotations = new List<Vector3>();
+     public class SentinelInfo
+     {
+          public string Id;
+          public Vector2 Coordinate;
+          public Vector2 Target;
+     }
+     
+     public class CameraInfo
+     {
+          public string Id;
+          public Vector2 Coordinate;
+          public Vector3 Rotation;
+     }
+     public List<SentinelInfo> SentinelInfos = new List<SentinelInfo>();
+     public List<CameraInfo> CameraInfos = new List<CameraInfo>();
      
      public int getCamerasCount()
      {
-          return CameraCoordinates.Count;
+          return CameraInfos.Count;
      }
 
      public int getSentinelCount()
      {
-          return SentinelCoordinates.Count;
+          return SentinelInfos.Count;
      }
 }

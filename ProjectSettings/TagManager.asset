@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Plane
+  - Camera
+  - Sentinel
+  - Target
   layers:
   - Default
   - TransparentFX
