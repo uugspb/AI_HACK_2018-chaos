@@ -43,6 +43,9 @@ public class UIHandler : MonoBehaviour
 	{
 		_cameraText.text = string.Format(CameraText, inputConfig.MaxCameras - outputConfig.getCamerasCount());
 		_sentinelText.text = string.Format(SentinelText, inputConfig.MaxSentinels - outputConfig.getSentinelCount());
+		
+		_addCamera.enabled = outputConfig.getCamerasCount() < inputConfig.MaxCameras;
+		_addSentinel.enabled = outputConfig.getSentinelCount() < inputConfig.MaxSentinels;
 	}
 
 
