@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Fox : Singleton<Fox>
 {    
     public event Action OnFoxKilled;
+    public event Action OnFoxGoalReached;
 
     [SerializeField] private List<Transform> _startPositions;
 
@@ -78,5 +79,12 @@ public class Fox : Singleton<Fox>
 
     void Update()
     {
+        if(Vector3.Distance(transform.position, target.transform.position) < 2f)
+        {
+            if(OnFoxGoalReached != null)
+            {
+                OnFoxGoalReached.Invoke();
+            }
+        }
     }
 }
