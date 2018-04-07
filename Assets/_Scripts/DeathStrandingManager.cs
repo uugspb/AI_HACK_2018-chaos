@@ -14,6 +14,20 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
     private float startingTime;
     private List<KillingPoint> killingPoints = new List<KillingPoint>();
 
+
+    public bool IsCloseToKillingPoint( Vector3 position)
+    {
+        for (int i = 0; i < killingPoints.Count; i++)
+        {
+            if( Vector3.Distance(killingPoints[i].position, position) < 4 &&
+                killingPoints[i].created)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void StartPlayMode()
     {
         killingPoints = new List<KillingPoint>();

@@ -18,6 +18,8 @@ public class FoxAnimator : MonoBehaviour {
 		if (m_agent != null) {
 			m_animator.SetFloat ("speed", m_agent.velocity.magnitude);
 		}
+		crouch = DeathStrandingManager.instance != null && DeathStrandingManager.instance.IsCloseToKillingPoint (transform.position);
+		m_animator.SetFloat ("speed", m_agent.velocity.magnitude);
 		m_animator.SetBool ("crouching", crouch);
 	}
 }
