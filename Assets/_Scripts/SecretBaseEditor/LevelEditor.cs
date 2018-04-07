@@ -27,7 +27,6 @@ public class LevelEditor : MonoBehaviour
      private const float MinimalDiff = 1;
      private const float DeletionDiff = 0.5f;
      private const float WheelCoef = 40.0f;
-     private const float PlaneSize = 4.0f;
 
      private Vector3 _lastAddedSentinelCoordinate;
      private string _lastAddedSentinelId;
