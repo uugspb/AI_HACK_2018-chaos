@@ -17,7 +17,6 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Button _erase;
 	[SerializeField] private Camera _camera;
 	[SerializeField] private Button _openEditor;
-	[SerializeField] private Text _title;
 
 	private bool _isEditMode = true;
 	
@@ -30,7 +29,7 @@ public class UIHandler : MonoBehaviour
 	private Quaternion editorRotation = Quaternion.Euler(90, 0, 0);
 	private Quaternion gameRotation = Quaternion.Euler(30, 45, 0);
 	private float gameCameraSize = 9.66f;
-	private float editorCameraSize = 14f;
+	private float editorCameraSize = 19f;
 	
 	// Use this for initialization
 	void Start ()
@@ -52,7 +51,6 @@ public class UIHandler : MonoBehaviour
 		_start.onClick.AddListener(delegate
 		{
 			_isEditMode = false;
-			_title.gameObject.active = false;
 			_addSentinel.gameObject.active = false;
 			_addCamera.gameObject.active = false;
 			_start.gameObject.active = false;
@@ -66,7 +64,6 @@ public class UIHandler : MonoBehaviour
 		_openEditor.onClick.AddListener(delegate
 		{
 			_isEditMode = true;
-			_title.gameObject.active = true;
 			_addSentinel.gameObject.active = true;
 			_addCamera.gameObject.active = true;
 			_start.gameObject.active = true;
