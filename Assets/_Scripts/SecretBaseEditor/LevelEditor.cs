@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class LevelEditor : MonoBehaviour
 {
      [SerializeField] private GameObject _cameraPrefab;
-     [SerializeField] private GameObject _sentinelPrefab;
      [SerializeField] private GameObject _sentinelTargetPrefab;
     
      public delegate void LevelConfigChanged(InputLevelConfig config, int sentinelsCount, int camerasCount);
@@ -27,14 +26,13 @@ public class LevelEditor : MonoBehaviour
 
      private List<GameObject> _cameras = new List<GameObject>();
      private List<GameObject> _targets = new List<GameObject>();
-     private List<GameObject> _sentinels = new List<GameObject>();
+     private int _patrolCount = 0;
 
      public enum EditorState
      {
           Normal,
           CreateSentinel,
           CreateCamera,
-          CreateTarget,
           RotateCamera,
           Erase
      }
@@ -45,7 +43,7 @@ public class LevelEditor : MonoBehaviour
      {
           if (OnConfigChanged != null)
           {
-               OnConfigChanged(_currentInputConfig, _sentinels.Count, _cameras.Count);
+               OnConfigChanged(_currentInputConfig, _patrolCount, _cameras.Count);
           }
      }
 
@@ -94,11 +92,13 @@ public class LevelEditor : MonoBehaviour
                {
                     if (CheckCoordinates(position))
                     {
-                         var instance = Instantiate(_sentinelPrefab);
-                         instance.transform.position = position;
-                         _currentState = EditorState.CreateTarget;
-                         _sentinels.Add(instance);
-                         SetInfo("Now add sentinel's target");
+                         PatrolManager.instance.CreatePatrol();
+                         //var instance = Instantiate(_sentinelPrefab);
+                         //instance.transform.position = position;
+                         //_currentState = EditorState.CreateTarget;
+                         //_sentinels.Add(instance);
+                         _patrolCount++;
+                         SetInfo("");
                          Refresh();    
                     }
                     else
@@ -125,35 +125,6 @@ public class LevelEditor : MonoBehaviour
                     }
                }
                     break;
-               case EditorState.CreateTarget:
-               {
-                    var distanceFromSpawnPoint = (position - _sentinels.Last().transform.position).magnitude;
-                    if (distanceFromSpawnPoint > MinimalDiff)
-                    {
-                         var instance = Instantiate(_sentinelTargetPrefab);
-                         instance.transform.position = position;
-                         _currentState = EditorState.Normal;
-                         var lineRenderer = instance.AddComponent<LineRenderer>();
-                         var positions = new List<Vector3>();
-                         positions.Add(position);
-                         positions.Add(_sentinels.Last().transform.position);
-                         lineRenderer.sortingOrder = 1;
-                         lineRenderer.startWidth = 0.1f;
-                         lineRenderer.endWidth = 0.1f;
-                         lineRenderer.material = new Material (Shader.Find ("Sprites/Default"));
-                         lineRenderer.SetPositions(positions.ToArray());
-                         lineRenderer.startColor = Color.yellow; 
-                         lineRenderer.endColor = Color.blue;
-                         SetInfo("");
-                         _targets.Add(instance);
-                         Refresh();    
-                    }
-                    else
-                    {
-                         SetInfo("Target is too close to spawn point");
-                    }
-               }
-                    break;
                case EditorState.RotateCamera:
                     _currentState = EditorState.Normal;
                     SetInfo("");
@@ -170,39 +141,12 @@ public class LevelEditor : MonoBehaviour
                               break;    
                          }
                     }
-
-                    foreach (var sentinel in _sentinels)
-                    {
-                         var diff = (position - sentinel.transform.position).magnitude;
-                         if (diff < DeletionDiff)
-                         {
-                              int index = _sentinels.IndexOf(sentinel);
-                              DestroyByIndex(index);
-                              break;    
-                         }
-                    }
                     this._currentState = LevelEditor.EditorState.Normal;
                     this.SetInfo("");
                }
                     break;
                default:
                     throw new ArgumentOutOfRangeException();
-          }
-     }
-
-     private void DestroyByIndex(int index)
-     {
-          GameObject sentinel = _sentinels[index];
-          if (sentinel != null)
-          {
-               _sentinels.Remove(sentinel);
-               UnityEngine.Object.Destroy((UnityEngine.Object) sentinel); 
-          }
-          GameObject target = _targets[index];
-          if (target != null)
-          {
-               _targets.Remove(target);
-               UnityEngine.Object.Destroy((UnityEngine.Object) target); 
           }
      }
 
@@ -234,22 +178,15 @@ public class LevelEditor : MonoBehaviour
                     return false;
                }
           }
-          foreach (var sentinel in _sentinels)
-          {
-               var diffVector = position - sentinel.transform.position;
-               if (diffVector.magnitude < MinimalDiff)
-               {
-                    return false;
-               }
-          }
 
           return true;
      }
 
      public void Erase()
      {
+          PatrolManager.instance.ClearAllPatrols();
           _currentState = EditorState.Erase;
-          SetInfo("Erase placed object");
+          SetInfo("");
      }
 
      public EditorState GetCurrentState()
