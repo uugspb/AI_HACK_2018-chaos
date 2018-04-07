@@ -8,6 +8,8 @@ public class PatrolManager : Singleton<PatrolManager>
     public int maxPatrolAmount;
     public GameObject patrolPrefab;
     public Camera cam;
+    [SerializeField] private GameObject _flagPrefab;
+    
 
     public List<Patrol> patrols = new List<Patrol>();
 
@@ -30,6 +32,7 @@ public class PatrolManager : Singleton<PatrolManager>
     {
         print("kek");
         List<Vector3> points = new List<Vector3>();
+        List<GameObject> flags = new List<GameObject>();
         while (points.Count != 3)
         {
             while (!Input.GetMouseButtonDown(0))
@@ -46,6 +49,9 @@ public class PatrolManager : Singleton<PatrolManager>
                 points.Add(hit.point);
                 line.positionCount = points.Count;
                 line.SetPositions(points.Select(x => x + Vector3.up).ToArray());
+                var flagInstance = Instantiate(_flagPrefab);
+                flagInstance.transform.position = hit.point;
+                flags.Add(flagInstance);
             }
             print("kek2");
 
@@ -56,7 +62,12 @@ public class PatrolManager : Singleton<PatrolManager>
         var patrol = Instantiate(patrolPrefab, points[0] + Vector3.up, Quaternion.identity).GetComponent<Patrol>();
         patrol.points = points;
         line.enabled = false;
+        
         patrols.Add(patrol);
+        foreach (var flag in flags)
+        {
+            Destroy(flag.gameObject);
+        }
     }
 
     public void StartPatrol()
