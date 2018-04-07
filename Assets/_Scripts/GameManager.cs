@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameMode.play:
                 mode = GameMode.editor;
+                ChangeTimeScale(1.0f);
                 EditorMode();
                 break;
         }
@@ -51,6 +52,12 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 0;
         else
             Time.timeScale = _savedTimescale;
+    }
+
+    public void ChangeTimeScale(float value)
+    {
+        Time.timeScale = value;
+        _savedTimescale = value;
     }
 }
 

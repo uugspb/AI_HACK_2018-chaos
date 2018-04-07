@@ -19,6 +19,8 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Button _openEditor;
 	[SerializeField] private Button _pauseButton;
 	[SerializeField] private Text _pauseButtonText;
+	[SerializeField] private Text _timeLabel;
+	[SerializeField] private Slider _timeSlider;
 	
 	private bool _isEditMode = true;
 	private bool _isPaused = false;
@@ -63,6 +65,8 @@ public class UIHandler : MonoBehaviour
 			_erase.gameObject.active = false;
 			_openEditor.gameObject.active = true;
 			_pauseButton.gameObject.active = true;
+			_timeSlider.gameObject.active = true;
+			_timeLabel.gameObject.active = true;
 			StartCoroutine(ChangeCameraPos());
 		});
 		_openEditor.onClick.AddListener(delegate
@@ -77,6 +81,9 @@ public class UIHandler : MonoBehaviour
 			_erase.gameObject.active = true;
 			_openEditor.gameObject.active = false;
 			_pauseButton.gameObject.active = false;
+			_timeSlider.gameObject.active = false;
+			_timeLabel.gameObject.active = false;
+			_timeSlider.value = 1f;
 			StartCoroutine(ChangeCameraPos());
 		});
 		_pauseButton.onClick.AddListener(delegate
@@ -88,6 +95,10 @@ public class UIHandler : MonoBehaviour
 			else
 				_pauseButtonText.text = "Pause";
 		});
+		_timeSlider.minValue = 0.25f;
+		_timeSlider.maxValue = 4;
+		_timeSlider.value = 1;
+		_timeSlider.onValueChanged.AddListener(delegate(float value) { GameManager.instance.ChangeTimeScale(value); });
 	}
 
 	private void OnDestroy()
