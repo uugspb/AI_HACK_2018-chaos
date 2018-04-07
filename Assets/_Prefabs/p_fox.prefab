@@ -1434,6 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d0aa290e0c754d88a88a1b3ac279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPositions: []
   target: {fileID: 0}
   foxSurface: {fileID: 0}
 --- !u!114 &114985447514683600
@@ -1492,6 +1493,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: a14bbfb3b35b54255836774b48520ea7, type: 2}
   - {fileID: 2100000, guid: dc7373463533040188df0ac083a6a767, type: 2}
   - {fileID: 2100000, guid: 7d00b6473ade14ee08b98efa604cfd57, type: 2}
+  - {fileID: 2100000, guid: 90a8fcbfd542943efb4a7490b912d879, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
