@@ -140,8 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c64732d29da6f49870c61b28559532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introScene: Fov_test
-  _playScene: level0
+  _intro: Intro
+  _play: level1
+  _score: Finish
 --- !u!4 &164742316
 Transform:
   m_ObjectHideFlags: 0

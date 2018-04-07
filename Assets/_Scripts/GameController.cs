@@ -12,6 +12,7 @@ public class GameController : Singleton<GameController> {
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        LoadIntro();
     }
 
     [EditorButton]
