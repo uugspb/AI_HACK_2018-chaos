@@ -21,8 +21,36 @@ public class PlaneClickDetector : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
 			{
-				if(hit.collider.CompareTag("Plane"))
+				var isEditorAffected = false;
+				if (_editor.GetCurrentState() == LevelEditor.EditorState.Erase)
+				{
+					if (hit.collider.CompareTag("Camera") ||
+					    hit.collider.CompareTag("Sentinel") ||
+					    hit.collider.CompareTag("Target") ||
+					    hit.collider.CompareTag("Plane"))
+					{
+						isEditorAffected = true;
+					}
+				} else if (_editor.GetCurrentState() == LevelEditor.EditorState.RotateCamera)
+				{
+					if (hit.collider.CompareTag("Camera") ||
+					    hit.collider.CompareTag("Plane"))
+					{
+						isEditorAffected = true;
+					}
+				}
+				else
+				{
+					if (hit.collider.CompareTag("Plane"))
+					{
+						isEditorAffected = true;
+					}
+				}
+
+				if (isEditorAffected)
+				{
 					_editor.HandleMouseClick(hit.point);
+				}
 			}		
 		}
 

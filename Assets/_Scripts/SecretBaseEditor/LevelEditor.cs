@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelEditor : MonoBehaviour
 {
@@ -24,19 +25,26 @@ public class LevelEditor : MonoBehaviour
      private OutputLevelConfig _currentOutputConfig = new OutputLevelConfig();
 
      private const float MinimalDiff = 1;
+     private const float DeletionDiff = 0.5f;
      private const float WheelCoef = 40.0f;
      private const float PlaneSize = 4.0f;
 
      private Vector3 _lastAddedSentinelCoordinate;
+     private string _lastAddedSentinelId;
+     private string _lastAddedCameraId;
      private GameObject _lastAddedCamera;
-     
-     private enum EditorState
+     private List<GameObject> _cameras = new List<GameObject>();
+     private List<GameObject> _targets = new List<GameObject>();
+     private List<GameObject> _sentinels = new List<GameObject>();
+
+     public enum EditorState
      {
           Normal,
           CreateSentinel,
           CreateCamera,
           CreateTarget,
-          RotateCamera
+          RotateCamera,
+          Erase
      }
 
      private EditorState _currentState = EditorState.Normal;
@@ -92,64 +100,156 @@ public class LevelEditor : MonoBehaviour
 
      public void HandleMouseClick(Vector3 coordinate)
      {
+          var position = new Vector3(coordinate.x, 0, coordinate.z);
           switch (_currentState)
           {
                case EditorState.Normal:
                     break;
                case EditorState.CreateSentinel:
                {
-                    var position = new Vector3(coordinate.x, 0, coordinate.z);
-                    var instance = Instantiate(_sentinelPrefab);
-                    instance.transform.position = position;
-                    _currentOutputConfig.SentinelCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
-                    _currentState = EditorState.CreateTarget;
-                    _lastAddedSentinelCoordinate = position;
-                    SetInfo("Now add sentinel's target");
-                    Refresh();
+                    if (CheckCoordinates(position))
+                    {
+                         var instance = Instantiate(_sentinelPrefab);
+                         instance.transform.position = position;
+                         var sentinel = new OutputLevelConfig.SentinelInfo();
+                         sentinel.Id = System.Guid.NewGuid().ToString();
+                         sentinel.Coordinate = new Vector2(coordinate.x, coordinate.z);
+                         _lastAddedSentinelId = sentinel.Id;
+                         
+                         _currentOutputConfig.SentinelInfos.Add(sentinel);
+                         _currentState = EditorState.CreateTarget;
+                         _lastAddedSentinelCoordinate = position;
+                         _sentinels.Add(instance);
+                         SetInfo("Now add sentinel's target");
+                         Refresh();    
+                    }
+                    else
+                    {
+                         SetInfo("Too close to other object");
+                    }
                }
                    
                     break;
                case EditorState.CreateCamera:
                {
-                    var position = new Vector3(coordinate.x, 0, coordinate.z);
-                    var instance = Instantiate(_cameraPrefab);
-                    instance.transform.position = position;
-                    _currentOutputConfig.CameraCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
-                    _currentState = EditorState.RotateCamera;
-                    SetInfo("Configure camera rotation via mouse wheel");
-                    _lastAddedCamera = instance;
-                    Refresh();
+                    if (CheckCoordinates(position))
+                    {
+                         var instance = Instantiate(_cameraPrefab);
+                         instance.transform.position = position;
+                         var camera = new OutputLevelConfig.CameraInfo();
+                         camera.Id = System.Guid.NewGuid().ToString();
+                         _lastAddedCameraId = camera.Id;
+                         camera.Coordinate = new Vector2(coordinate.x, coordinate.z);
+                         _currentOutputConfig.CameraInfos.Add(camera);
+                         _currentState = EditorState.RotateCamera;
+                         SetInfo("Configure camera rotation via mouse wheel");
+                         _lastAddedCamera = instance;
+                         _cameras.Add(instance);
+                         Refresh();    
+                    }
+                    else
+                    {
+                         SetInfo("Too close to other object");
+                    }
                }
                     break;
                case EditorState.CreateTarget:
                {
-                    var position = new Vector3(coordinate.x, 0, coordinate.z);
-                    var instance = Instantiate(_sentinelTargetPrefab);
-                    instance.transform.position = position;
-                    _currentState = EditorState.Normal;
-                    var lineRenderer = instance.AddComponent<LineRenderer>();
-                    var positions = new List<Vector3>();
-                    positions.Add(position);
-                    positions.Add(_lastAddedSentinelCoordinate);
-                    lineRenderer.sortingOrder = 1;
-                    lineRenderer.startWidth = 0.1f;
-                    lineRenderer.endWidth = 0.1f;
-                    lineRenderer.material = new Material (Shader.Find ("Sprites/Default"));
-                    lineRenderer.SetPositions(positions.ToArray());
-                    lineRenderer.startColor = Color.yellow; 
-                    lineRenderer.endColor = Color.blue;
-                    SetInfo("");
-                    _currentOutputConfig.TargetCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
-                    Refresh();
+                    var distanceFromSpawnPoint = (position - _lastAddedSentinelCoordinate).magnitude;
+                    if (distanceFromSpawnPoint > MinimalDiff)
+                    {
+                         var instance = Instantiate(_sentinelTargetPrefab);
+                         instance.transform.position = position;
+                         _currentState = EditorState.Normal;
+                         var lineRenderer = instance.AddComponent<LineRenderer>();
+                         var positions = new List<Vector3>();
+                         positions.Add(position);
+                         positions.Add(_lastAddedSentinelCoordinate);
+                         lineRenderer.sortingOrder = 1;
+                         lineRenderer.startWidth = 0.1f;
+                         lineRenderer.endWidth = 0.1f;
+                         lineRenderer.material = new Material (Shader.Find ("Sprites/Default"));
+                         lineRenderer.SetPositions(positions.ToArray());
+                         lineRenderer.startColor = Color.yellow; 
+                         lineRenderer.endColor = Color.blue;
+                         SetInfo("");
+                         foreach (var sentinelInfo in _currentOutputConfig.SentinelInfos)
+                         {
+                              if (sentinelInfo.Id == _lastAddedSentinelId)
+                              {
+                                   sentinelInfo.Target = new Vector2(coordinate.x, coordinate.z);
+                              }
+                         }
+                         _targets.Add(instance);
+                         Refresh();    
+                    }
+                    else
+                    {
+                         SetInfo("Target is too close to spawn point");
+                    }
                }
                     break;
                case EditorState.RotateCamera:
-                    _currentOutputConfig.CameraRotations.Add(_lastAddedCamera.transform.rotation.eulerAngles);
+                    foreach (var cameraInfo in _currentOutputConfig.CameraInfos)
+                    {
+                         if (cameraInfo.Id == _lastAddedCameraId)
+                         {
+                              cameraInfo.Rotation = _lastAddedCamera.transform.rotation.eulerAngles;
+                         }
+                    }
                     _currentState = EditorState.Normal;
                     SetInfo("");
                     break;
+               case EditorState.Erase:
+               {
+                    foreach (var cameraInfo in _currentOutputConfig.CameraInfos)
+                    {
+                         var diff = (new Vector2(coordinate.x, coordinate.z) - cameraInfo.Coordinate).magnitude;
+                         if (diff < DeletionDiff)
+                         {
+                              int index = _currentOutputConfig.CameraInfos.IndexOf(cameraInfo);
+                              _currentOutputConfig.CameraInfos.RemoveAt(index);
+                              GameObject camera = _cameras[index];
+                              if(camera != null)
+                                   _cameras.Remove(camera);
+                              UnityEngine.Object.Destroy(camera);     
+                              break;
+                         }
+                    }
+                    foreach (var sentinelInfo in _currentOutputConfig.SentinelInfos)
+                    {
+                         var diff = (new Vector2(coordinate.x, coordinate.z) - sentinelInfo.Coordinate).magnitude;
+                         if (diff < DeletionDiff)
+                         {
+                              int index = _currentOutputConfig.SentinelInfos.IndexOf(sentinelInfo);
+                              _currentOutputConfig.SentinelInfos.RemoveAt(index);
+                              DestroyByIndex(index);     
+                              break;
+                         }
+                    }
+        
+                    this._currentState = LevelEditor.EditorState.Normal;
+                    this.SetInfo("");
+               }
+                    break;
                default:
                     throw new ArgumentOutOfRangeException();
+          }
+     }
+
+     private void DestroyByIndex(int index)
+     {
+          GameObject sentinel = _sentinels[index];
+          if (sentinel != null)
+          {
+               _sentinels.Remove(sentinel);
+               UnityEngine.Object.Destroy((UnityEngine.Object) sentinel); 
+          }
+          GameObject target = _targets[index];
+          if (target != null)
+          {
+               _targets.Remove(target);
+               UnityEngine.Object.Destroy((UnityEngine.Object) target); 
           }
      }
 
@@ -170,24 +270,28 @@ public class LevelEditor : MonoBehaviour
           }
      }
 
-     private void CreateMapObject(GameObject prefab, List<Vector2> coordinates2change)
+     private bool CheckCoordinates(Vector3 position)
      {
-          var isCorrectPosition = false;
-          while (!isCorrectPosition)
+          if (!CheckCoordinateByExisting(position, _currentInputConfig.ObstacleCoordinates))
+               return false;
+          foreach (var cameraInfo in _currentOutputConfig.CameraInfos)
           {
-               var xCoord = UnityEngine.Random.Range(-PlaneSize, PlaneSize);
-               var zCoord = UnityEngine.Random.Range(-PlaneSize, PlaneSize);
-               var position = new Vector3(xCoord, 0, zCoord);
-               if (CheckCoordinateByExisting(position, _currentInputConfig.ObstacleCoordinates) &&
-                   CheckCoordinateByExisting(position, _currentOutputConfig.CameraCoordinates) &&
-                   CheckCoordinateByExisting(position, _currentOutputConfig.SentinelCoordinates))
+               var diffVector = new Vector2(position.x, position.y) - cameraInfo.Coordinate;
+               if (diffVector.magnitude < MinimalDiff)
                {
-                    isCorrectPosition = true;
-                    var instance = Instantiate(prefab, _plane.transform);
-                    instance.transform.localPosition = position;
-                    coordinates2change.Add(new Vector2(position.x, position.z));
+                    return false;
                }
           }
+          foreach (var sentiInfo in _currentOutputConfig.SentinelInfos)
+          {
+               var diffVector = new Vector2(position.x, position.y) - sentiInfo.Coordinate;
+               if (diffVector.magnitude < MinimalDiff)
+               {
+                    return false;
+               }
+          }
+
+          return true;
      }
 
      private bool CheckCoordinateByExisting(Vector3 coordinateToCheck, List<Vector2> existingCoordinates)
@@ -201,5 +305,16 @@ public class LevelEditor : MonoBehaviour
                }
           }
           return true;
+     }
+
+     public void Erase()
+     {
+          _currentState = EditorState.Erase;
+          SetInfo("Erase placed object");
+     }
+
+     public EditorState GetCurrentState()
+     {
+          return _currentState;
      }
 }

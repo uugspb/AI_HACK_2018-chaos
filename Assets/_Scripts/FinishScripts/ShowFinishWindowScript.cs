@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 public class ShowFinishWindowScript : MonoBehaviour {
 
 	public Canvas finishCanvas;
-	//	public GameObject showEarnPoints;
-
 
 	private static ShowFinishWindowScript instance;
 	public static ShowFinishWindowScript Instance 
@@ -25,6 +23,9 @@ public class ShowFinishWindowScript : MonoBehaviour {
 
 	private int startPoints;
 	private int totalPoints;
+
+	//PlayerPrefs.GetInt ("LevelAward") - сохраняем набранные очки сюда
+	// PlayerPrefs.GetInt ("Points"); - startPoints + ("LevelAward")
 
 	// для увеличения очков
 	struct Record
@@ -42,13 +43,8 @@ public class ShowFinishWindowScript : MonoBehaviour {
 
 	private void SetStartParams()
 	{
-		startPoints = PlayerPrefs.GetInt ("StartPoints");
+		startPoints = 9;
 		totalPoints = PlayerPrefs.GetInt ("Points");
-
-		//		winnerCanvas.transform.GetChild (0).GetChild (1).GetChild (0).GetComponent<Text> ().text = 
-		//			startPoints.ToString(); 
-		//		winnerCanvas.transform.GetChild (0).GetChild (0).GetChild (0).GetComponent<Text> ().text = 
-		//			totalPoints.ToString();
 
 		finishCanvas.transform.GetChild (0).GetChild (0).GetChild (0).GetComponent<Slider>().wholeNumbers = 
 			true;
