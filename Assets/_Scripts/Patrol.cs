@@ -69,12 +69,14 @@ public class Patrol : MonoBehaviour
             agent.SetDestination(points[nextPointIndex % 3]);
         }
 
+		/*
         if (AlarmScript.instance.isAlarm)
             agent.speed = 6f;
         else
         {
             agent.speed = 3.5f;
         }
+        */
 
     }
 }

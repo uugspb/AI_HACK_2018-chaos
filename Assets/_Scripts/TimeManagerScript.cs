@@ -10,14 +10,6 @@ public class TimeManagerScript : MonoBehaviour {
 	[SerializeField]
 	float startTime = 0f;
 
-	[SerializeField]
-	float timeScale = 1;
-
-	public float TimeScale
-	{
-		get { return timeScale; }
-		set { timeScale = value; }
-	}
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +17,7 @@ public class TimeManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		currentTime += timeScale * Time.deltaTime;
+		currentTime += Time.timeScale * Time.deltaTime;
+
 	}
 }
