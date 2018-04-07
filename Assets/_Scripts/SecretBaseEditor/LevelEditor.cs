@@ -99,7 +99,8 @@ public class LevelEditor : MonoBehaviour
                          //_sentinels.Add(instance);
                          _patrolCount++;
                          SetInfo("");
-                         Refresh();    
+                         Refresh();
+                         _currentState = EditorState.Normal;
                     }
                     else
                     {
@@ -131,6 +132,7 @@ public class LevelEditor : MonoBehaviour
                     break;
                case EditorState.Erase:
                {
+                    _patrolCount = 0;
                     foreach (var camera in _cameras)
                     {
                          var diff = (position - camera.transform.position).magnitude;

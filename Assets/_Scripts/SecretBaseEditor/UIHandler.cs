@@ -19,7 +19,7 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Button _openEditor;
 	[SerializeField] private Text _title;
 
-	private bool _isEditMode = false;
+	private bool _isEditMode = true;
 	
 	private const string CameraText = "Cameras left: {0}";
 	private const string SentinelText = "Sentinels left: {0}";
@@ -131,10 +131,7 @@ public class UIHandler : MonoBehaviour
 			_camera.orthographicSize = Mathf.Lerp(startingSize, targetSize, t);
 			yield return new WaitForEndOfFrame();
 		}
-		if(_isEditMode)
-			GameManager.instance.mode = GameMode.editor;
-		else
-			GameManager.instance.mode = GameMode.play;
+		GameManager.instance.SwitchMode();
 		yield return 0;
 		//_camera.transform.rotation = Quaternion.Lerp(previousRotation, targetRotation, Time.deltaTime * Speed);
 	}
