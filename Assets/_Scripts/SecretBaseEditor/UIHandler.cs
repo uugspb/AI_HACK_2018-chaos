@@ -17,8 +17,11 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Button _erase;
 	[SerializeField] private Camera _camera;
 	[SerializeField] private Button _openEditor;
-
+	[SerializeField] private Button _pauseButton;
+	[SerializeField] private Text _pauseButtonText;
+	
 	private bool _isEditMode = true;
+	private bool _isPaused = false;
 	
 	private const string CameraText = "Cameras left: {0}";
 	private const string SentinelText = "Sentinels left: {0}";
@@ -59,6 +62,7 @@ public class UIHandler : MonoBehaviour
 			_info.gameObject.active = false;
 			_erase.gameObject.active = false;
 			_openEditor.gameObject.active = true;
+			_pauseButton.gameObject.active = true;
 			StartCoroutine(ChangeCameraPos());
 		});
 		_openEditor.onClick.AddListener(delegate
@@ -72,7 +76,17 @@ public class UIHandler : MonoBehaviour
 			_info.gameObject.active = true;
 			_erase.gameObject.active = true;
 			_openEditor.gameObject.active = false;
+			_pauseButton.gameObject.active = false;
 			StartCoroutine(ChangeCameraPos());
+		});
+		_pauseButton.onClick.AddListener(delegate
+		{
+			_isPaused = !_isPaused;
+			GameManager.instance.SetPaused(_isPaused);
+			if (_isPaused)
+				_pauseButtonText.text = "Play";
+			else
+				_pauseButtonText.text = "Pause";
 		});
 	}
 

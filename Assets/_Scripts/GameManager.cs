@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public GameMode mode = GameMode.editor;
+    private float _savedTimescale = 1;
 
     [EditorButton]
     public void SwitchMode()
@@ -42,6 +43,14 @@ public class GameManager : Singleton<GameManager>
         Fox.instance.Kill();
         PatrolManager.instance.StopPatrol();
         PatrolManager.instance.StartPatrol();
+    }
+
+    public void SetPaused(bool paused)
+    {
+        if (paused)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = _savedTimescale;
     }
 }
 
