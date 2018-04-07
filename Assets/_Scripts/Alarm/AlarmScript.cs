@@ -5,7 +5,8 @@ using UnityEngine;
 public class AlarmScript : MonoBehaviour {
 
 	[SerializeField] private bool _isAlarm;
-	[SerializeField] private float _alarmTime = 10f;
+	[SerializeField] private const float MAX_ALARM_TIME = 10f;
+	[SerializeField] private float _alarmTime;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,15 @@ public class AlarmScript : MonoBehaviour {
 		{
 			PanicTime ();
 		}
+
+		if (Input.GetKeyDown (KeyCode.A))
+			AlarmActivate ();
+	}
+
+	public void AlarmActivate()
+	{
+		_alarmTime = MAX_ALARM_TIME;
+		_isAlarm = !_isAlarm;
 	}
 
 	private void PanicTime()
