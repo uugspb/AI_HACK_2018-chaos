@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39797ff3-e03d-4d22-b510-efe9f7cec139" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs.meta" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/contentModel.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/contentModel.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0.unity" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0.unity" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/LightingData.asset" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/LightingData.asset" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/LightingData.asset.meta" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/LightingData.asset.meta" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_dir.png" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_dir.png" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_dir.png.meta" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_dir.png.meta" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_light.exr" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_light.exr" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_light.exr.meta" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/Lightmap-0_comp_light.exr.meta" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/NavMesh-NavMesh Surface.asset" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/NavMesh-NavMesh Surface.asset" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/NavMesh-NavMesh Surface.asset.meta" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/NavMesh-NavMesh Surface.asset.meta" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/level0/ReflectionProbe-0.exr.meta" afterPath="$PROJECT_DIR$/Assets/_Scenes/level0/ReflectionProbe-0.exr.meta" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" afterPath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Fox.cs" afterPath="$PROJECT_DIR$/Assets/_Scripts/Fox.cs" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,14 +18,37 @@
       <file leaf-file-name="Fox.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding>
-                <marker date="1523104775050" expanded="true" signature="6:100" ph="..." />
-                <marker date="1523104775050" expanded="true" signature="134:696" ph="{...}" />
-                <marker date="1523104775050" expanded="true" signature="288:437" ph="{...}" />
-                <marker date="1523104775050" expanded="true" signature="480:663" ph="{...}" />
-                <marker date="1523104775050" expanded="true" signature="682:694" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="6:100" ph="..." />
+                <marker date="1523107118248" expanded="true" signature="135:792" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="289:438" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="481:664" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="700:759" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="778:790" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Singleton.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+              <folding>
+                <marker date="1523098406943" expanded="true" signature="21:293" ph="/// Be aware this will not prevent a non singleton constructor ... " />
+                <marker date="1523098406943" expanded="true" signature="359:2317" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="467:1737" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="476:1734" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="481:702" ph="/* if (applicationIsQuitting) { ... */" />
+                <marker date="1523098406943" expanded="true" signature="751:1701" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="861:1091" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="1121:1577" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="1135:1570" ph="/* Debug.LogError (&quot;NO SINGLETON FOUND &quot;+typeof(T).Name+&quot;!!!!&quot;); ... */" />
+                <marker date="1523098406943" expanded="true" signature="1585:1688" ph="/* Debug.Log(&quot;[Singleton] Using instance already created: &quot; + ... */" />
+                <marker date="1523098406943" expanded="true" signature="1740:2315" ph="/* When Unity quits, it destroys objects in a random order. ... */" />
               </folding>
             </state>
           </provider>
@@ -49,20 +57,22 @@
       <file leaf-file-name="DeathStrandingManager.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+            <state relative-caret-position="765">
+              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding>
-                <marker date="1523106525789" expanded="true" signature="6:100" ph="..." />
-                <marker date="1523106525789" expanded="true" signature="188:1797" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="558:604" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="655:821" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="867:1795" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="894:1789" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="960:1721" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="1083:1332" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="1458:1707" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="1824:2099" ph="{...}" />
-                <marker date="1523106525789" expanded="true" signature="2020:2092" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="6:100" ph="..." />
+                <marker date="1523107175534" expanded="true" signature="188:2257" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="581:627" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="678:917" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="963:1927" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="990:1921" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1056:1879" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1179:1481" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1626:1865" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1957:2255" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2015:2249" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2284:2550" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2476:2548" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -74,6 +84,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -239,36 +250,59 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding>
+            <marker date="1523098406943" expanded="true" signature="21:293" ph="/// Be aware this will not prevent a non singleton constructor ... " />
+            <marker date="1523098406943" expanded="true" signature="359:2317" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="467:1737" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="476:1734" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="481:702" ph="/* if (applicationIsQuitting) { ... */" />
+            <marker date="1523098406943" expanded="true" signature="751:1701" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="861:1091" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="1121:1577" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="1135:1570" ph="/* Debug.LogError (&quot;NO SINGLETON FOUND &quot;+typeof(T).Name+&quot;!!!!&quot;); ... */" />
+            <marker date="1523098406943" expanded="true" signature="1585:1688" ph="/* Debug.Log(&quot;[Singleton] Using instance already created: &quot; + ... */" />
+            <marker date="1523098406943" expanded="true" signature="1740:2315" ph="/* When Unity quits, it destroys objects in a random order. ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding>
-            <marker date="1523104775050" expanded="true" signature="6:100" ph="..." />
-            <marker date="1523104775050" expanded="true" signature="134:696" ph="{...}" />
-            <marker date="1523104775050" expanded="true" signature="288:437" ph="{...}" />
-            <marker date="1523104775050" expanded="true" signature="480:663" ph="{...}" />
-            <marker date="1523104775050" expanded="true" signature="682:694" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="6:100" ph="..." />
+            <marker date="1523107118248" expanded="true" signature="135:792" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="289:438" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="481:664" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="700:759" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="778:790" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+        <state relative-caret-position="765">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
-            <marker date="1523106525789" expanded="true" signature="6:100" ph="..." />
-            <marker date="1523106525789" expanded="true" signature="188:1797" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="558:604" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="655:821" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="867:1795" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="894:1789" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="960:1721" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="1083:1332" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="1458:1707" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="1824:2099" ph="{...}" />
-            <marker date="1523106525789" expanded="true" signature="2020:2092" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="6:100" ph="..." />
+            <marker date="1523107175534" expanded="true" signature="188:2257" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="581:627" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="678:917" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="963:1927" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="990:1921" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1056:1879" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1179:1481" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1626:1865" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1957:2255" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2015:2249" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2284:2550" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2476:2548" ph="{...}" />
           </folding>
         </state>
       </provider>

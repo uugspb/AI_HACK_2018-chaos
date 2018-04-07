@@ -18,8 +18,17 @@
         </e>
         <e p="_Scripts" t="Include">
           <e p="DeathStrandingManager.cs" t="Include" />
+          <e p="FOV" t="Include">
+            <e p="FovSource.cs" t="Include" />
+            <e p="FovTarget.cs" t="Include" />
+            <e p="FovTest.cs" t="Include" />
+          </e>
           <e p="Fox.cs" t="Include" />
+          <e p="PatrolController" t="Include">
+            <e p="PatrolControllerScript.cs" t="Include" />
+          </e>
           <e p="Singleton.cs" t="Include" />
+          <e p="TimeManagerScript.cs" t="Include" />
         </e>
         <e p="NavMeshComponents" t="Include">
           <e p="Editor" t="Include">
