@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 [RequireComponent(typeof(CameraProjectionChange))]
-public class CameraController : MonoBehaviour
+public class GameCameraController : MonoBehaviour
 {
     [SerializeField] private Transform _mapPoi;
     [SerializeField] private Transform _followPoi;
