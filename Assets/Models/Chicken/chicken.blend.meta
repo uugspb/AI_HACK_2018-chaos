@@ -39,6 +39,7 @@ ModelImporter:
     7400002: Eat
     7400004: Move
     7400006: Rock
+    7400008: Idle
     9500000: //RootNode
     13700000: ChickenBrown
   externalObjects: {}
