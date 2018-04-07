@@ -2,23 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlarmScript : MonoBehaviour {
-
-	private static AlarmScript instance;
-	public static AlarmScript Instance 
-	{
-		get {
-			if (instance == null) 
-			{
-				instance = GameObject.FindObjectOfType<AlarmScript> ();
-			}
-			return AlarmScript.instance; }
-	}
+public class AlarmScript : Singleton<AlarmScript> {
 
 
 	[SerializeField] private bool _isAlarm;
 	[SerializeField] private const float MAX_ALARM_TIME = 10f;
 	[SerializeField] private float _alarmTime;
+
+    public bool IsAlarm { get { return _isAlarm; } }
 
 	// Use this for initialization
 	void Start () {
