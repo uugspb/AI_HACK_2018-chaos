@@ -12,8 +12,8 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
     public NavMeshSurface foxSurface;
 
     private float startingTime;
-    private List<KillingPoint> killingPoints;
-    
+    private List<KillingPoint> killingPoints = new List<KillingPoint>();
+
     private void Start()
     {
         startingTime = Time.time;
@@ -24,8 +24,8 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
         killingPoints.Add(new KillingPoint(Time.time - startingTime, position));
         startingTime = Time.time;
         StopAllCoroutines();
-        
-
+        ClearAllModiriers();
+        StartCoroutine(AppearingModifierCoroutine());
     }
 
     IEnumerator AppearingModifierCoroutine()
@@ -34,24 +34,39 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
         {
             foreach (var killingPoint in killingPoints)
             {
-                if (Time.time - startingTime - predictionTime >= killingPoint.time && !killingPoint.created)
+                if (Time.time - startingTime >= killingPoint.time - predictionTime && !killingPoint.created)
                 {
                     killingPoint.created = true;
                     killingPoint.modifier = Instantiate(modifierPrefab, killingPoint.position, Quaternion.identity);
                     foxSurface.BuildNavMesh();
+                    Fox.instance.ResetDestination();
                 }
-                
-                if (Time.time - startingTime - predictionTime >= killingPoint.time && !killingPoint.created)
+
+                if (Time.time - startingTime >= killingPoint.time - predictionTime + stayingTime &&
+                    !killingPoint.destoyed)
                 {
-                    killingPoint.created = true;
-                    killingPoint.modifier = Instantiate(modifierPrefab, killingPoint.position, Quaternion.identity);
+                    killingPoint.destoyed = true;
+                    Destroy(killingPoint.modifier);
                     foxSurface.BuildNavMesh();
+                    Fox.instance.ResetDestination();
+
                 }
             }
-            
-            
 
             yield return null;
+        }
+    }
+
+    void ClearAllModiriers()
+    {
+        foreach (var killingPoint in killingPoints)
+        {
+            killingPoint.created = false;
+            killingPoint.destoyed = false;
+            Destroy(killingPoint.modifier);
+            foxSurface.BuildNavMesh();
+            Fox.instance.ResetDestination();
+
         }
     }
 }
@@ -63,11 +78,10 @@ public class KillingPoint
     public bool created;
     public bool destoyed;
     public GameObject modifier;
-    
+
     public KillingPoint(float time, Vector3 position)
     {
         this.time = time;
         this.position = position;
     }
-    
 }
