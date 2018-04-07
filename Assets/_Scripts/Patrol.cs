@@ -59,6 +59,7 @@ public class Patrol : MonoBehaviour
     IEnumerator ResetFoxKilledDelay()
     {
         yield return new WaitForSeconds(0.5f);
+        foxkilled = false;
     }
     void Update()
     {
