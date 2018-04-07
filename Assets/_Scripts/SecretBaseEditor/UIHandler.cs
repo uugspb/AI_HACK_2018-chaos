@@ -85,13 +85,13 @@ public class UIHandler : MonoBehaviour
 		_levelEditor.OnInfoChanged -= UpdateInfo;
 	}
 
-	private void UpdateUI(InputLevelConfig inputConfig, OutputLevelConfig outputConfig)
+	private void UpdateUI(InputLevelConfig inputConfig, int sentinelsCount, int cameraCount)
 	{
-		_cameraText.text = string.Format(CameraText, inputConfig.MaxCameras - outputConfig.getCamerasCount());
-		_sentinelText.text = string.Format(SentinelText, inputConfig.MaxSentinels - outputConfig.getSentinelCount());
+		_cameraText.text = string.Format(CameraText, inputConfig.MaxCameras - cameraCount);
+		_sentinelText.text = string.Format(SentinelText, inputConfig.MaxSentinels - sentinelsCount);
 		
-		_addCamera.enabled = outputConfig.getCamerasCount() < inputConfig.MaxCameras;
-		_addSentinel.enabled = outputConfig.getSentinelCount() < inputConfig.MaxSentinels;
+		_addCamera.enabled = cameraCount < inputConfig.MaxCameras;
+		_addSentinel.enabled = sentinelsCount < inputConfig.MaxSentinels;
 	}
 
 
@@ -131,7 +131,10 @@ public class UIHandler : MonoBehaviour
 			_camera.orthographicSize = Mathf.Lerp(startingSize, targetSize, t);
 			yield return new WaitForEndOfFrame();
 		}
-
+		if(_isEditMode)
+			GameManager.instance.mode = GameMode.editor;
+		else
+			GameManager.instance.mode = GameMode.play;
 		yield return 0;
 		//_camera.transform.rotation = Quaternion.Lerp(previousRotation, targetRotation, Time.deltaTime * Speed);
 	}
