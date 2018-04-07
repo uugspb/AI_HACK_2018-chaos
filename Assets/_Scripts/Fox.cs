@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Fox : Singleton<Fox>
 {
+    public event Action OnFoxKilled;
+
     public Transform target;
     public NavMeshSurface foxSurface;
     private NavMeshAgent agent;
@@ -31,6 +34,11 @@ public class Fox : Singleton<Fox>
     [EditorButton]
     public void Kill()
     {
+        if(OnFoxKilled != null)
+        {
+            OnFoxKilled.Invoke();
+        }
+
         DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
         agent.Warp(startingPoint);
         agent.SetDestination(target.position);

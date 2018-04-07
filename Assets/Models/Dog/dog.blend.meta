@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 16493464e05b14842b9dbbc84f4f25d6
+timeCreated: 1523114376
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: basic_rig
+    100002: basic_rig_Footsteps
+    100004: basic_rig_Head
+    100006: basic_rig_L_Calf
+    100008: basic_rig_L_Clavicle
+    100010: basic_rig_L_Finger0
+    100012: basic_rig_L_Finger1
+    100014: basic_rig_L_Finger2
+    100016: basic_rig_L_Foot
+    100018: basic_rig_L_Forearm
+    100020: basic_rig_L_Hand
+    100022: basic_rig_L_Thigh
+    100024: basic_rig_L_Toe0
+    100026: basic_rig_L_UpperArm
+    100028: basic_rig_Neck
+    100030: basic_rig_Pelvis
+    100032: basic_rig_R_Calf
+    100034: basic_rig_R_Clavicle
+    100036: basic_rig_R_Finger0
+    100038: basic_rig_R_Finger1
+    100040: basic_rig_R_Finger2
+    100042: basic_rig_R_Foot
+    100044: basic_rig_R_Forearm
+    100046: basic_rig_R_Hand
+    100048: basic_rig_R_Thigh
+    100050: basic_rig_R_Toe0
+    100052: basic_rig_Spine
+    100054: basic_rig_Spine1
+    100056: basic_rig_UpperArm
+    100058: C_man_1_FBX2013
+    100060: Cube
+    100062: Cube_001
+    100064: Cube_002
+    100066: Cube_003
+    100068: //RootNode
+    100070: Sphere
+    400000: basic_rig
+    400002: basic_rig_Footsteps
+    400004: basic_rig_Head
+    400006: basic_rig_L_Calf
+    400008: basic_rig_L_Clavicle
+    400010: basic_rig_L_Finger0
+    400012: basic_rig_L_Finger1
+    400014: basic_rig_L_Finger2
+    400016: basic_rig_L_Foot
+    400018: basic_rig_L_Forearm
+    400020: basic_rig_L_Hand
+    400022: basic_rig_L_Thigh
+    400024: basic_rig_L_Toe0
+    400026: basic_rig_L_UpperArm
+    400028: basic_rig_Neck
+    400030: basic_rig_Pelvis
+    400032: basic_rig_R_Calf
+    400034: basic_rig_R_Clavicle
+    400036: basic_rig_R_Finger0
+    400038: basic_rig_R_Finger1
+    400040: basic_rig_R_Finger2
+    400042: basic_rig_R_Foot
+    400044: basic_rig_R_Forearm
+    400046: basic_rig_R_Hand
+    400048: basic_rig_R_Thigh
+    400050: basic_rig_R_Toe0
+    400052: basic_rig_Spine
+    400054: basic_rig_Spine1
+    400056: basic_rig_UpperArm
+    400058: C_man_1_FBX2013
+    400060: Cube
+    400062: Cube_001
+    400064: Cube_002
+    400066: Cube_003
+    400068: //RootNode
+    400070: Sphere
+    2100000: StrawHat
+    2100002: StrawHat_darker
+    2100004: StrawHat_ribbon
+    2100006: DogSkin2
+    2100008: BowRed
+    2100010: DogSkin1
+    2100012: DogEyes
+    2100014: DogSkin4
+    2100016: DogSkin3
+    2100018: GlassesRed
+    2100020: GlassesBlack
+    4300000: Sphere
+    4300002: Cube_003
+    4300004: Cube_001
+    4300006: Cube
+    4300008: C_man_1_FBX2013
+    4300010: Cube_002
+    7400000: Default Take
+    9500000: //RootNode
+    13700000: C_man_1_FBX2013
+    13700002: Cube
+    13700004: Cube_001
+    13700006: Cube_002
+    13700008: Cube_003
+    13700010: Sphere
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

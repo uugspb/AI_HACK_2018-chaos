@@ -13,6 +13,7 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Text _cameraText;
 	[SerializeField] private Text _sentinelText;
 	[SerializeField] private LevelEditor _levelEditor;
+	[SerializeField] private Text _info;
 	
 	private const string CameraText = "Cameras left: {0}";
 	private const string SentinelText = "Sentinels left: {0}";
@@ -21,19 +22,37 @@ public class UIHandler : MonoBehaviour
 	void Start ()
 	{
 		_levelEditor.OnConfigChanged += UpdateUI;
+		_levelEditor.OnInfoChanged += UpdateInfo;
+		_addSentinel.onClick.AddListener(delegate
+		{
+			_levelEditor.AddSentinel();
+		}); 
+		_addCamera.onClick.AddListener(delegate
+		{
+			_levelEditor.AddCamera();
+		});
 	}
 
 	private void OnDestroy()
 	{
 		_levelEditor.OnConfigChanged -= UpdateUI;
+		_levelEditor.OnInfoChanged -= UpdateInfo;
 	}
 
 	private void UpdateUI(InputLevelConfig inputConfig, OutputLevelConfig outputConfig)
 	{
 		_cameraText.text = string.Format(CameraText, inputConfig.MaxCameras - outputConfig.getCamerasCount());
 		_sentinelText.text = string.Format(SentinelText, inputConfig.MaxSentinels - outputConfig.getSentinelCount());
+		
+		_addCamera.enabled = outputConfig.getCamerasCount() < inputConfig.MaxCameras;
+		_addSentinel.enabled = outputConfig.getSentinelCount() < inputConfig.MaxSentinels;
 	}
 
+
+	private void UpdateInfo(string info)
+	{
+		_info.text = info;
+	}
 	// Update is called once per frame
 	void Update () {
 		
