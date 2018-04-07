@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 319917419}
   - component: {fileID: 319917423}
   m_Layer: 8
-  m_Name: FovCollider
+  m_Name: FovCollider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 847671364}
   - component: {fileID: 847671363}
   m_Layer: 8
-  m_Name: FovCollider
+  m_Name: FovCollider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

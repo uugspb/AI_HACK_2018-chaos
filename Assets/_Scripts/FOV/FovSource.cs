@@ -41,7 +41,8 @@ public class FovSource : MonoBehaviour
             _gizmosP3 = distance;
 
             RaycastHit hit;
-            if (Physics.Raycast(_eyePoint.transform.position, direction, out hit, distance, _agentLayerId))
+
+            if (Physics.Raycast(_eyePoint.transform.position, direction, out hit, distance, 1))
             {
                 var detectedOpponent = hit.collider.GetComponent<FovTarget>();
                 if (detectedOpponent != null && detectedOpponent.Type != _me.Type)
