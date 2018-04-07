@@ -8,8 +8,7 @@ using UnityEngine.UI;
 public class LevelEditor : MonoBehaviour
 {
      [SerializeField] private GameObject _cameraPrefab;
-     [SerializeField] private GameObject _sentinelTargetPrefab;
-    
+
      public delegate void LevelConfigChanged(InputLevelConfig config, int sentinelsCount, int camerasCount);
 
      public event LevelConfigChanged OnConfigChanged;
@@ -20,12 +19,11 @@ public class LevelEditor : MonoBehaviour
 
      private InputLevelConfig _currentInputConfig;
 
-     private const float MinimalDiff = 1;
+     public const float MinimalDiff = 1;
      private const float DeletionDiff = 0.5f;
      private const float WheelCoef = 40.0f;
 
      private List<GameObject> _cameras = new List<GameObject>();
-     private List<GameObject> _targets = new List<GameObject>();
      private int _patrolCount = 0;
 
      public enum EditorState
@@ -90,13 +88,9 @@ public class LevelEditor : MonoBehaviour
                     break;
                case EditorState.CreateSentinel:
                {
-                    if (CheckCoordinates(position))
+                    if (PatrolManager.instance.CheckCoordinatesForNewPatrol(position))
                     {
                          PatrolManager.instance.CreatePatrol();
-                         //var instance = Instantiate(_sentinelPrefab);
-                         //instance.transform.position = position;
-                         //_currentState = EditorState.CreateTarget;
-                         //_sentinels.Add(instance);
                          _patrolCount++;
                          SetInfo("");
                          Refresh();
@@ -133,7 +127,6 @@ public class LevelEditor : MonoBehaviour
                     break;
                case EditorState.Erase:
                {
-                    _patrolCount = 0;
                     foreach (var camera in _cameras)
                     {
                          var diff = (position - camera.transform.position).magnitude;
@@ -189,6 +182,8 @@ public class LevelEditor : MonoBehaviour
      {
           PatrolManager.instance.ClearAllPatrols();
           _currentState = EditorState.Erase;
+          _patrolCount = 0;
+          Refresh();
           SetInfo("");
      }
 

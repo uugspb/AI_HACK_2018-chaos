@@ -70,6 +70,19 @@ public class PatrolManager : Singleton<PatrolManager>
         }
     }
 
+    public bool CheckCoordinatesForNewPatrol(Vector3 coordinate)
+    {
+        foreach (var patrol in patrols)
+        {
+            if ((patrol.gameObject.transform.position - coordinate).magnitude < LevelEditor.MinimalDiff)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void StartPatrol()
     {
         patrols.ForEach(x => x.StartAgentPatrol());
