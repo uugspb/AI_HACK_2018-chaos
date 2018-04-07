@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: f2726e5441a3e4ce5ba31e3138f460f8
-timeCreated: 1523126402
+guid: ab314b595d17041d9b9ab08f384e3a97
+timeCreated: 1523129765
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Wood1
-    2100002: Snow
-    2100004: Wood2
+    2100000: Material.001
+    2100002: Material.002
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
