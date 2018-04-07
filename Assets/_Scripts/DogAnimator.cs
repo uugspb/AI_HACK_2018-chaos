@@ -48,7 +48,6 @@ public class DogAnimator : MonoBehaviour {
 
     private IEnumerator AnimateGun()
     {
-        UnityEditor.EditorApplication.isPaused = true;
         m_animator.SetTrigger("shoot");
         gunOnSpine.gameObject.SetActive(false);
         gunInHand.gameObject.SetActive(true);
