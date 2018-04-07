@@ -11,12 +11,17 @@ public class FovSource : MonoBehaviour
 
     [SerializeField] private FovTarget _me;
     [SerializeField] private float _fovAngle;
+    [SerializeField] private FovSectorUI _radarUI;
     private Collider _fovCollider;
 
 
     // Use this for initialization
     void Start()
     {
+        if(_radarUI != null)
+        {
+            _radarUI.SectorDegrees = _fovAngle;
+        }
         _fovCollider = GetComponent<Collider>();
     }
 
