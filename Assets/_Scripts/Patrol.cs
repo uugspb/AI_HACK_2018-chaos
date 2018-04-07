@@ -14,12 +14,14 @@ public class Patrol : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         line = GetComponent<LineRenderer>();
+        line.enabled = true;
         line.positionCount = points.Count;
         line.SetPositions(points.Select(x=>x+Vector3.up).ToArray());
     }
 
     public void StartAgentPatrol()
     {
+        line.enabled = false;
         agent.isStopped = false;
         agent.SetDestination(points[nextPointIndex % 3]);
     }
@@ -27,6 +29,7 @@ public class Patrol : MonoBehaviour
     public void StopAgentPatrol()
     {
         agent.Warp(points[0]);
+        line.enabled = true;
         nextPointIndex = 1;
         agent.isStopped = true;
     }

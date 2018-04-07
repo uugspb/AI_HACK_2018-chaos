@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour
     }
 
     [ContextMenu("SwitchToFoxMode")]
+    [EditorButton]
     public void SwitchToFoxMode()
     {
         if (!_camera.orthographic)
