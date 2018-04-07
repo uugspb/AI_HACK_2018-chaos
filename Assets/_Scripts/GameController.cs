@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : Singleton<GameController> {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //[SerializeField] private float _alarmDuration;
+
+    //private float _alarmCountDown;
+
+    //public void SetAlarm()
+    //{
+    //    _alarmCountDown = _alarmDuration;
+    //}
+
+    //private void Update()
+    //{
+    //    _alarmCountDown -= Time.deltaTime;
+
+    //    if(_alarmCountDown <= 0)
+    //    {
+
+    //    }
+    //}
+
+
+
 }
