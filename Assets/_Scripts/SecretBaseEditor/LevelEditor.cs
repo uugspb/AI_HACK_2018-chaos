@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class LevelEditor : MonoBehaviour
 {
-     [SerializeField] private GameObject _plane;
-     [SerializeField] private GameObject _boxPrefab;
      [SerializeField] private GameObject _cameraPrefab;
      [SerializeField] private GameObject _sentinelPrefab;
      [SerializeField] private GameObject _sentinelTargetPrefab;
@@ -64,11 +62,6 @@ public class LevelEditor : MonoBehaviour
      private void Start()
      {
           StartCoroutine(WaitForSubscribers());
-          foreach (var coordinate in _currentInputConfig.ObstacleCoordinates)
-          {
-               var instance = Instantiate(_boxPrefab, _plane.transform);
-               instance.transform.localPosition = new Vector3(coordinate.x, 0, coordinate.y);
-          }
      }
 
      private IEnumerator WaitForSubscribers()
@@ -271,8 +264,6 @@ public class LevelEditor : MonoBehaviour
 
      private bool CheckCoordinates(Vector3 position)
      {
-          if (!CheckCoordinateByExisting(position, _currentInputConfig.ObstacleCoordinates))
-               return false;
           foreach (var cameraInfo in _currentOutputConfig.CameraInfos)
           {
                var diffVector = new Vector2(position.x, position.y) - cameraInfo.Coordinate;
