@@ -9,6 +9,7 @@ public class LevelEditor : MonoBehaviour
      [SerializeField] private GameObject _boxPrefab;
      [SerializeField] private GameObject _cameraPrefab;
      [SerializeField] private GameObject _sentinelPrefab;
+     [SerializeField] private GameObject _sentinelTargetPrefab;
     
      public delegate void LevelConfigChanged(InputLevelConfig config, OutputLevelConfig outputConfig);
 
@@ -23,8 +24,11 @@ public class LevelEditor : MonoBehaviour
      private OutputLevelConfig _currentOutputConfig = new OutputLevelConfig();
 
      private const float MinimalDiff = 1;
-
+     private const float WheelCoef = 40.0f;
      private const float PlaneSize = 4.0f;
+
+     private Vector3 _lastAddedSentinelCoordinate;
+     private GameObject _lastAddedCamera;
      
      private enum EditorState
      {
@@ -84,6 +88,78 @@ public class LevelEditor : MonoBehaviour
           _currentState = EditorState.CreateCamera;
           SetInfo("Now put camera on the map");
           //CreateMapObject(_cameraPrefab, _currentOutputConfig.CameraCoordinates);
+     }
+
+     public void HandleMouseClick(Vector3 coordinate)
+     {
+          switch (_currentState)
+          {
+               case EditorState.Normal:
+                    break;
+               case EditorState.CreateSentinel:
+               {
+                    var position = new Vector3(coordinate.x, 0, coordinate.z);
+                    var instance = Instantiate(_sentinelPrefab);
+                    instance.transform.position = position;
+                    _currentOutputConfig.SentinelCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
+                    _currentState = EditorState.CreateTarget;
+                    _lastAddedSentinelCoordinate = position;
+                    SetInfo("Now add sentinel's target");
+                    Refresh();
+               }
+                   
+                    break;
+               case EditorState.CreateCamera:
+               {
+                    var position = new Vector3(coordinate.x, 0, coordinate.z);
+                    var instance = Instantiate(_cameraPrefab);
+                    instance.transform.position = position;
+                    _currentOutputConfig.CameraCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
+                    _currentState = EditorState.RotateCamera;
+                    SetInfo("Configure camera rotation via mouse wheel");
+                    _lastAddedCamera = instance;
+                    Refresh();
+               }
+                    break;
+               case EditorState.CreateTarget:
+               {
+                    var position = new Vector3(coordinate.x, 0, coordinate.z);
+                    var instance = Instantiate(_sentinelTargetPrefab);
+                    instance.transform.position = position;
+                    _currentState = EditorState.Normal;
+                    var lineRenderer = instance.AddComponent<LineRenderer>();
+                    var positions = new List<Vector3>();
+                    positions.Add(position);
+                    positions.Add(_lastAddedSentinelCoordinate);
+                    lineRenderer.sortingOrder = 1;
+                    lineRenderer.startWidth = 0.1f;
+                    lineRenderer.endWidth = 0.1f;
+                    lineRenderer.material = new Material (Shader.Find ("Sprites/Default"));
+                    lineRenderer.SetPositions(positions.ToArray());
+                    lineRenderer.startColor = Color.yellow; 
+                    lineRenderer.endColor = Color.blue;
+                    SetInfo("");
+                    _currentOutputConfig.TargetCoordinates.Add(new Vector2(coordinate.x, coordinate.z));
+                    Refresh();
+               }
+                    break;
+               case EditorState.RotateCamera:
+                    _currentOutputConfig.CameraRotations.Add(_lastAddedCamera.transform.rotation.eulerAngles);
+                    _currentState = EditorState.Normal;
+                    SetInfo("");
+                    break;
+               default:
+                    throw new ArgumentOutOfRangeException();
+          }
+     }
+
+     public void SetCameraRotation(float wheelValue)
+     {
+          if (_currentState == EditorState.RotateCamera)
+          {
+               var previous = _lastAddedCamera.transform.rotation.eulerAngles;
+               _lastAddedCamera.transform.rotation = Quaternion.Euler(previous.x, previous.y + wheelValue * WheelCoef, previous.z);
+          }
      }
 
      private void SetInfo(string message)

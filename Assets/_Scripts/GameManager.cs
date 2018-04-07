@@ -25,12 +25,14 @@ public class GameManager : Singleton<GameManager>
     void PlayMode()
     {
         DeathStrandingManager.instance.StartPlayMode();
+        PatrolManager.instance.StartPatrol();
         Fox.instance.StartWalking();
     }
 
     void EditorMode()
     {
         Fox.instance.StopWalking();
+        PatrolManager.instance.StopPatrol();
         DeathStrandingManager.instance.StopPlayMode();
     }
 
@@ -38,6 +40,8 @@ public class GameManager : Singleton<GameManager>
     public void KillFox()
     {
         Fox.instance.Kill();
+        PatrolManager.instance.StopPatrol();
+        PatrolManager.instance.StartPatrol();
     }
 }
 

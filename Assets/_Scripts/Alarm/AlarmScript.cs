@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class AlarmScript : MonoBehaviour {
 
+	private static AlarmScript instance;
+	public static AlarmScript Instance 
+	{
+		get {
+			if (instance == null) 
+			{
+				instance = GameObject.FindObjectOfType<AlarmScript> ();
+			}
+			return AlarmScript.instance; }
+	}
+
+
 	[SerializeField] private bool _isAlarm;
 	[SerializeField] private const float MAX_ALARM_TIME = 10f;
 	[SerializeField] private float _alarmTime;

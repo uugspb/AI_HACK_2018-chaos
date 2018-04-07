@@ -46,6 +46,7 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
                     killingPoint.created = true;
                     killingPoint.modifier = Instantiate(modifierPrefab, killingPoint.position, Quaternion.identity);
                     foxSurface.BuildNavMesh();
+                    yield return null;
                     Fox.instance.ResetDestination();
                 }
 
@@ -55,6 +56,7 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
                     killingPoint.destoyed = true;
                     Destroy(killingPoint.modifier);
                     foxSurface.BuildNavMesh();
+                    yield return null;
                     Fox.instance.ResetDestination();
 //
                 }

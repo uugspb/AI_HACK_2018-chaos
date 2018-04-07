@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 381779188}
   - component: {fileID: 381779187}
   - component: {fileID: 381779186}
+  - component: {fileID: 381779190}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -559,6 +560,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &381779190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381779185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -768656878, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &388289157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1041,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add Obstacle
+  m_Text: Add Camera
 --- !u!222 &978630415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1154,9 +1170,10 @@ GameObject:
   - component: {fileID: 1391679282}
   - component: {fileID: 1391679281}
   - component: {fileID: 1391679280}
+  - component: {fileID: 1391679284}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1229,6 +1246,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391679284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391679279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa8511752db9495c877ad8de574929e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 381779188}
+  _editor: {fileID: 1719655435}
 --- !u!1 &1719655434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1291,8 @@ MonoBehaviour:
   _cameraPrefab: {fileID: 1052256243889852, guid: 3f3136429a85d4030be859842ce4b121,
     type: 2}
   _sentinelPrefab: {fileID: 1215101444606192, guid: f5c465ee3d55a45deb7752ac668d445e,
+    type: 2}
+  _sentinelTargetPrefab: {fileID: 1088944569975812, guid: eadd1c3a1dca34b0c8e40c837af10057,
     type: 2}
 --- !u!4 &1719655436
 Transform:
