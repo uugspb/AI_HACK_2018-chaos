@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="39797ff3-e03d-4d22-b510-efe9f7cec139" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/contentModel.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Chaos/.idea/contentModel.xml" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" afterPath="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Fox.cs" afterPath="$PROJECT_DIR$/Assets/_Scripts/Fox.cs" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Fox.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <folding>
+                <marker date="1523107118248" expanded="true" signature="6:100" ph="..." />
+                <marker date="1523107118248" expanded="true" signature="135:792" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="289:438" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="481:664" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="700:759" ph="{...}" />
+                <marker date="1523107118248" expanded="true" signature="778:790" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Singleton.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+              <folding>
+                <marker date="1523098406943" expanded="true" signature="21:293" ph="/// Be aware this will not prevent a non singleton constructor ... " />
+                <marker date="1523098406943" expanded="true" signature="359:2317" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="467:1737" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="476:1734" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="481:702" ph="/* if (applicationIsQuitting) { ... */" />
+                <marker date="1523098406943" expanded="true" signature="751:1701" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="861:1091" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="1121:1577" ph="{...}" />
+                <marker date="1523098406943" expanded="true" signature="1135:1570" ph="/* Debug.LogError (&quot;NO SINGLETON FOUND &quot;+typeof(T).Name+&quot;!!!!&quot;); ... */" />
+                <marker date="1523098406943" expanded="true" signature="1585:1688" ph="/* Debug.Log(&quot;[Singleton] Using instance already created: &quot; + ... */" />
+                <marker date="1523098406943" expanded="true" signature="1740:2315" ph="/* When Unity quits, it destroys objects in a random order. ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeathStrandingManager.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+              <folding>
+                <marker date="1523107175534" expanded="true" signature="6:100" ph="..." />
+                <marker date="1523107175534" expanded="true" signature="188:2257" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="581:627" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="678:917" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="963:1927" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="990:1921" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1056:1879" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1179:1481" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1626:1865" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="1957:2255" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2015:2249" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2284:2550" ph="{...}" />
+                <marker date="1523107175534" expanded="true" signature="2476:2548" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Fox.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-4" />
+    <option name="y" value="36" />
+    <option name="width" value="1928" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="chaos (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="chaos (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="chaos (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="chaos (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="_Scripts" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.1.1/resources/app/git/mingw64/bin/git.exe" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39797ff3-e03d-4d22-b510-efe9f7cec139" name="Default" comment="" />
+      <created>1523092489289</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523092489289</updated>
+      <workItem from="1523092491542" duration="620000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="620000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Singleton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding>
+            <marker date="1523098406943" expanded="true" signature="21:293" ph="/// Be aware this will not prevent a non singleton constructor ... " />
+            <marker date="1523098406943" expanded="true" signature="359:2317" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="467:1737" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="476:1734" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="481:702" ph="/* if (applicationIsQuitting) { ... */" />
+            <marker date="1523098406943" expanded="true" signature="751:1701" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="861:1091" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="1121:1577" ph="{...}" />
+            <marker date="1523098406943" expanded="true" signature="1135:1570" ph="/* Debug.LogError (&quot;NO SINGLETON FOUND &quot;+typeof(T).Name+&quot;!!!!&quot;); ... */" />
+            <marker date="1523098406943" expanded="true" signature="1585:1688" ph="/* Debug.Log(&quot;[Singleton] Using instance already created: &quot; + ... */" />
+            <marker date="1523098406943" expanded="true" signature="1740:2315" ph="/* When Unity quits, it destroys objects in a random order. ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Fox.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <marker date="1523107118248" expanded="true" signature="6:100" ph="..." />
+            <marker date="1523107118248" expanded="true" signature="135:792" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="289:438" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="481:664" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="700:759" ph="{...}" />
+            <marker date="1523107118248" expanded="true" signature="778:790" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Scripts/DeathStrandingManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <marker date="1523107175534" expanded="true" signature="6:100" ph="..." />
+            <marker date="1523107175534" expanded="true" signature="188:2257" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="581:627" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="678:917" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="963:1927" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="990:1921" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1056:1879" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1179:1481" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1626:1865" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="1957:2255" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2015:2249" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2284:2550" ph="{...}" />
+            <marker date="1523107175534" expanded="true" signature="2476:2548" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
