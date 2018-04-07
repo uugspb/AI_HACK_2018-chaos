@@ -13,10 +13,21 @@ public class Fox : Singleton<Fox>
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(target.position);
         startingPoint = transform.position;
     }
 
+    public void StartWalking()
+    {
+        agent.isStopped = false;
+        agent.SetDestination(target.position);
+    }
+
+    public void StopWalking()
+    {
+        agent.Warp(startingPoint);
+        agent.isStopped = true;
+    }
+    
     [EditorButton]
     public void Kill()
     {

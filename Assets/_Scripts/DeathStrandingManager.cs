@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-// кодзима гений
+// кодзима гелий
 public class DeathStrandingManager : Singleton<DeathStrandingManager>
 {
     public float predictionTime = 2f; // время появления modifier до времени убийства (предсказание появления агента)
@@ -14,9 +14,16 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
     private float startingTime;
     private List<KillingPoint> killingPoints = new List<KillingPoint>();
 
-    private void Start()
+    public void StartPlayMode()
     {
+        killingPoints = new List<KillingPoint>();
         startingTime = Time.time;
+    }
+
+    public void StopPlayMode()
+    {
+        StopAllCoroutines();
+        ClearAllModiriers();
     }
 
     public void SetKillingPoint(Vector3 position)
@@ -65,7 +72,7 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager>
             killingPoint.destoyed = false;
             Destroy(killingPoint.modifier);
             foxSurface.BuildNavMesh();
-            Fox.instance.ResetDestination();
+            //Fox.instance.ResetDestination();
 
         }
     }
