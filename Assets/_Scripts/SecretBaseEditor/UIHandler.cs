@@ -14,6 +14,7 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private Text _sentinelText;
 	[SerializeField] private LevelEditor _levelEditor;
 	[SerializeField] private Text _info;
+	[SerializeField] private Button _erase;
 	
 	private const string CameraText = "Cameras left: {0}";
 	private const string SentinelText = "Sentinels left: {0}";
@@ -30,6 +31,10 @@ public class UIHandler : MonoBehaviour
 		_addCamera.onClick.AddListener(delegate
 		{
 			_levelEditor.AddCamera();
+		});
+		_erase.onClick.AddListener(delegate
+		{
+			_levelEditor.Erase();
 		});
 	}
 

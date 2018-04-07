@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Fox : Singleton<Fox>
 {
+    
     public event Action OnFoxKilled;
 
     public Transform target;

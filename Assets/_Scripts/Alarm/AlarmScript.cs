@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlarmScript : Singleton<AlarmScript> {
+public class AlarmScript : Singleton<AlarmScript>
+{
+    public bool isAlarm;
+    public float alarmTime = 10f;
+    private bool alarmActivated;
+
+    public void AlarmActivate()
+    {
+        if (!alarmActivated)
+        {
+            StartCoroutine(AlarmCoroutine());
+            alarmActivated = true;
+        }
+    }
 
 
-	[SerializeField] private bool _isAlarm;
-	[SerializeField] private const float MAX_ALARM_TIME = 10f;
-	[SerializeField] private float _alarmTime;
+    IEnumerator AlarmCoroutine()
+    {
+        isAlarm = true;
+        yield return new WaitForSeconds(alarmTime);
+        isAlarm = false;
+        alarmActivated = false;
 
-    public bool IsAlarm { get { return _isAlarm; } }
-
-	// Use this for initialization
-	void Start () {
-		_isAlarm = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (_isAlarm) 
-		{
-			PanicTime ();
-		}
-	}
-
-	public void AlarmActivate()
-	{
-		_alarmTime = MAX_ALARM_TIME;
-		_isAlarm = !_isAlarm;
-	}
-
-	private void PanicTime()
-	{
-		_alarmTime -= Time.timeScale * Time.deltaTime;
-	}
+    }
 }
