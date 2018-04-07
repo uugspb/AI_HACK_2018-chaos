@@ -80,11 +80,11 @@ public class CameraProjectionChange : MonoBehaviour
         {
             if (currentlyOrthographic)
             {
-                _camera.projectionMatrix = MatrixLerp(orthoMat, persMat, _currentT * _currentT);
+                _camera.projectionMatrix = MatrixLerp(orthoMat, persMat, _currentT );
             }
             else
             {
-                _camera.projectionMatrix = MatrixLerp(persMat, orthoMat, Mathf.Sqrt(_currentT));
+                _camera.projectionMatrix = MatrixLerp(persMat, orthoMat, _currentT );
             }
         }
         else

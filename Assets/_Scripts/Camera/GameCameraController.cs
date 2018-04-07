@@ -85,7 +85,7 @@ public class GameCameraController : MonoBehaviour
     private void LateUpdate()
     {
         var desiredPosition = Vector3.Lerp(_mapPoi.position, _followPoi.position, 1 - _lerpValue);
-        var desiredRotation = Quaternion.Slerp(_mapPoi.rotation, _followPoi.rotation, 1 - _lerpValue);
+        var desiredRotation = Quaternion.SlerpUnclamped(_mapPoi.rotation, _followPoi.rotation, 1 - _lerpTime / _switchTime);
 
         _camera.transform.position = desiredPosition;
         _camera.transform.rotation = desiredRotation;
