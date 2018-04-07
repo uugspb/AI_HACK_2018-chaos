@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4129407522072522}
+  - component: {fileID: 114035542003617990}
   - component: {fileID: 114750763712413188}
   m_Layer: 0
   m_Name: p_Managers
@@ -40,6 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114035542003617990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818271683133270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f9ab169d1b92146bb5824dc9f5adbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114750763712413188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,5 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f15d0cbca14d8ebdd4061765220e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierPrefab: {fileID: 0}
+  predictionTime: 2
+  stayingTime: 3
+  modifierPrefab: {fileID: 1248696313346502, guid: 3da4f5a845e06744b88c4d333434ae5b,
+    type: 2}
   foxSurface: {fileID: 0}
