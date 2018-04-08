@@ -34,7 +34,9 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager> {
     }
 
     public void SetKillingPoint (Vector3 position) {
-        killingPoints.Add (new KillingPoint (Time.time - startingTime, position));
+        float descreetDeltaTime = 0.25f;
+        float descreetedTime = Mathf.RoundToInt ((Time.time - startingTime) / descreetDeltaTime) * descreetDeltaTime;
+        killingPoints.Add (new KillingPoint (descreetedTime, position));
         startingTime = Time.time;
         StopAllCoroutines ();
         ClearAllModiriers ();
