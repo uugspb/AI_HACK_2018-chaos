@@ -29,18 +29,18 @@ NavMeshProjectSettings:
     cost: 15
   - name: 20
     cost: 20
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
+  - name: 25
+    cost: 25
+  - name: 30
+    cost: 30
+  - name: 40
+    cost: 40
+  - name: 50
+    cost: 50
+  - name: 60
+    cost: 60
+  - name: 70
+    cost: 70
   - name: 
     cost: 1
   - name: 
