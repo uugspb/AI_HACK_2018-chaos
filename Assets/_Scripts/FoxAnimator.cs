@@ -31,16 +31,16 @@ public class FoxAnimator : MonoBehaviour {
 		if (Fox.instance != null) {
 			if (!Fox.instance.IsKillInProgress) {
 				if (!crouch && !walk.isPlaying && GameManager.instance.mode == GameMode.play) {
-					walk.Play ();
+					// walk.Play ();
 				} else if (crouch && walk.isPlaying) {
-					walk.Stop ();
+					// walk.Stop ();
 				}
 			} else {
 				if (Fox.instance.PlayKillAnim) {
 					Fox.instance.PlayKillAnim = false;
 					m_animator.SetTrigger ("die");
 					m_animator.SetBool ("crouching", false);
-					walk.Stop ();
+					// walk.Stop ();
 				}
 			}
 		}
