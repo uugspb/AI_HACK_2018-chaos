@@ -12,6 +12,7 @@ public class Fox : Singleton<Fox>
     [SerializeField] private List<Transform> _startPositions;
     [SerializeField] private ParticleSystem _spawnParticles;
     [SerializeField] private AudioSource _shot;
+    [SerializeField] private AudioSource _spawn;
 
     public Transform target;
     public NavMeshSurface foxSurface;
@@ -69,7 +70,7 @@ public class Fox : Singleton<Fox>
         agent.Warp(GetRandomPosition());
         _spawnParticles.Play();
         agent.SetDestination(target.position);
-
+        _spawn.Play();
         _killRoutine = null;
     }
 [EditorButton]

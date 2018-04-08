@@ -7,6 +7,8 @@ public class FoxAnimator : MonoBehaviour {
 	public bool crouch;
 	NavMeshAgent m_agent;
 	Animator m_animator;
+
+    public AudioSource walk;
 	// Use this for initialization
 	void Start () {
 		m_agent = GetComponentInParent<NavMeshAgent> ();
@@ -20,5 +22,15 @@ public class FoxAnimator : MonoBehaviour {
 		}
 		crouch = DeathStrandingManager.instance != null && DeathStrandingManager.instance.IsCloseToKillingPoint (transform.position);
 		m_animator.SetBool ("crouching", crouch);
+
+
+        if(!crouch && !walk.isPlaying && GameManager.instance.mode == GameMode.play)
+        {
+            walk.Play();
+        }
+        else if(crouch && walk.isPlaying)
+        {
+            walk.Stop();
+        }
 	}
 }
