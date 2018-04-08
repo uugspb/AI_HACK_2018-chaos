@@ -9,7 +9,7 @@ public class Fox : Singleton<Fox>
     public event Action OnFoxKilled;
     public event Action OnFoxGoalReached;
     
-    [SerializeField] private List<Transform> _startPositions;
+    //[SerializeField] private List<Transform> _startPositions;
     [SerializeField] private ParticleSystem _spawnParticles;
     [SerializeField] private AudioSource _shot;
     [SerializeField] private AudioSource _spawn;
@@ -17,16 +17,16 @@ public class Fox : Singleton<Fox>
     public Transform target;
     public NavMeshSurface foxSurface;
     private NavMeshAgent agent;
-    private int _lastSpawnPointIndex = -1;
+    //private int _lastSpawnPointIndex = -1;
     private Vector3 _defaultStartPosition;
 
 
     void Start()
     {
-        if(_startPositions == null || _startPositions.Count == 0)
-        {
+        //if(_startPositions == null || _startPositions.Count == 0)
+        //{
             _defaultStartPosition = transform.position;
-        }
+        //}
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -38,7 +38,8 @@ public class Fox : Singleton<Fox>
 
     public void StopWalking()
     {
-        agent.Warp(GetRandomPosition());
+        //agent.Warp(GetRandomPosition());
+		agent.Warp(_defaultStartPosition);
         _spawnParticles.Play();
         agent.isStopped = true;
     }
@@ -73,7 +74,8 @@ public class Fox : Singleton<Fox>
         PatrolManager.instance.StopPatrol();
         PatrolManager.instance.StartPatrol();
         DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
-        agent.Warp(GetRandomPosition());
+        //agent.Warp(GetRandomPosition());
+		agent.Warp(_defaultStartPosition);
         _spawnParticles.Play();
         agent.SetDestination(target.position);
         _spawn.Play();
@@ -87,6 +89,7 @@ public class Fox : Singleton<Fox>
         agent.SetDestination(target.position);        
     }
 
+	/*
     private Vector3 GetRandomPosition()
     {
         if(_startPositions.Count == 0)
@@ -106,6 +109,7 @@ public class Fox : Singleton<Fox>
             return _startPositions[index].position;
         }        
     }
+    */
 
     void Update()
     {

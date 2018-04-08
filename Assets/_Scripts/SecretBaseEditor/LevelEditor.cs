@@ -55,6 +55,7 @@ public class LevelEditor : MonoBehaviour
      {
           foreach (var spawnProtector in _spawnProtectors)
           {
+			if (spawnProtector != null)
                spawnProtector.active = true;
           }
      }

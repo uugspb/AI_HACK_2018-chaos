@@ -9,9 +9,11 @@ public class PatrolManager : Singleton<PatrolManager>
     public GameObject patrolPrefab;
     public Camera cam;
     [SerializeField] private GameObject _flagPrefab;
+	[SerializeField] private GameObject _protectorPrefab;
     
 
     public List<Patrol> patrols = new List<Patrol>();
+	public List<GameObject> protectors = new List<GameObject>();
 
 
     private LineRenderer line;
@@ -44,7 +46,7 @@ public class PatrolManager : Singleton<PatrolManager>
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 1000, 1 << LayerMask.NameToLayer("Ground")))
+			if (Physics.Raycast(ray, out hit, 1000, -1) && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
                 points.Add(hit.point);
                 line.positionCount = points.Count;
@@ -52,6 +54,10 @@ public class PatrolManager : Singleton<PatrolManager>
                 var flagInstance = Instantiate(_flagPrefab);
                 flagInstance.transform.position = hit.point;
                 flags.Add(flagInstance);
+
+				var protectorInstance = Instantiate(_protectorPrefab);
+				protectorInstance.transform.position = hit.point;
+				protectors.Add(protectorInstance);
             }
             print("kek2");
 
@@ -92,6 +98,15 @@ public class PatrolManager : Singleton<PatrolManager>
         });
     }
 
+	public void DisableProtectors ()
+	{
+		foreach (var protect in protectors)
+		{
+			Destroy(protect.gameObject);
+		}
+		protectors.Clear ();
+	}
+
     public void StopPatrol()
     {
         patrols.ForEach(x => x.StopAgentPatrol());
@@ -102,5 +117,7 @@ public class PatrolManager : Singleton<PatrolManager>
     {
         patrols.ForEach(x => Destroy(x.gameObject));
         patrols = new List<Patrol>();
+
+		DisableProtectors ();
     }
 }
