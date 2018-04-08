@@ -11,6 +11,7 @@ public class Fox : Singleton<Fox>
     
     [SerializeField] private List<Transform> _startPositions;
     [SerializeField] private ParticleSystem _spawnParticles;
+    [SerializeField] private AudioSource _shot;
 
     public Transform target;
     public NavMeshSurface foxSurface;
@@ -46,6 +47,7 @@ public class Fox : Singleton<Fox>
     {
         if(_killRoutine == null)
         {
+            _shot.Play();
             _killRoutine = StartCoroutine(KillDelayed());
         }
     }
