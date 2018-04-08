@@ -32,12 +32,15 @@ public class PatrolManager : Singleton<PatrolManager>
     [EditorButton]
     public void CreatePatrol()
     {
-	    if (patrols.Count < MaxPatrolAmount)
+	    if (patrols.Count <= MaxPatrolAmount)
 	    {
 		    if (OnPatrolCountChanged != null)
 		    {
 			    OnPatrolCountChanged(MaxPatrolAmount - patrols.Count);
 		    }
+	    }
+	    if (patrols.Count < MaxPatrolAmount)
+	    {
 		    StartCoroutine(CreatePatrolCoroutine());
 	    }
     }
