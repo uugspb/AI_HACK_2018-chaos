@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.84223294, a: 1}
+  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.8422328, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -11796,7 +11796,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: f82cc0d69099f401db5ea516256bf8ad, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 33d14bbac572c2841bcb6d9c54748f0d, type: 2}
 --- !u!4 &1622528700
 Transform:
   m_ObjectHideFlags: 0
@@ -15287,8 +15287,11 @@ MonoBehaviour:
   _spawnParticles: {fileID: 0}
   _shot: {fileID: 0}
   _spawn: {fileID: 0}
+  _foxAnim: {fileID: 0}
   target: {fileID: 1009607478}
   foxSurface: {fileID: 0}
+  PlayKillAnim: 0
+  IsKillInProgress: 0
 --- !u!195 &2093031003
 NavMeshAgent:
   m_ObjectHideFlags: 0
