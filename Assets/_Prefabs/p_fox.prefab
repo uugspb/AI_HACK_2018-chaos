@@ -1820,8 +1820,11 @@ MonoBehaviour:
   _spawnParticles: {fileID: 198289277167775340}
   _shot: {fileID: 82882298043381460}
   _spawn: {fileID: 82659575905676940}
+  _foxAnim: {fileID: 114297800118756486}
   target: {fileID: 0}
   foxSurface: {fileID: 0}
+  PlayKillAnim: 0
+  IsKillInProgress: 0
 --- !u!114 &114985447514683600
 MonoBehaviour:
   m_ObjectHideFlags: 1

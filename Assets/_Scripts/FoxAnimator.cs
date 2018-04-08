@@ -15,8 +15,14 @@ public class FoxAnimator : MonoBehaviour {
 		m_animator = GetComponent<Animator> ();
 	}
 
-	// Update is called once per frame
-	void Update () {
+    public void ResetAnim()
+    {
+        m_animator.gameObject.SetActive(false);
+        m_animator.gameObject.SetActive(true);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (m_agent != null) {
 			m_animator.SetFloat ("speed", m_agent.velocity.magnitude);
 		}
@@ -24,13 +30,29 @@ public class FoxAnimator : MonoBehaviour {
 		m_animator.SetBool ("crouching", crouch);
 
 
-        if(!crouch && !walk.isPlaying && GameManager.instance.mode == GameMode.play)
+
+        if(!Fox.instance.IsKillInProgress)
         {
-            walk.Play();
+            if (!crouch && !walk.isPlaying && GameManager.instance.mode == GameMode.play)
+            {
+                walk.Play();
+            }
+            else if (crouch && walk.isPlaying)
+            {
+                walk.Stop();
+            }
         }
-        else if(crouch && walk.isPlaying)
+        else
         {
-            walk.Stop();
+            if (Fox.instance.PlayKillAnim)
+            {
+                Fox.instance.PlayKillAnim = false;
+                m_animator.SetTrigger("die");
+                m_animator.SetBool("crouching", false);
+                walk.Stop();
+            }
         }
+
+        
 	}
 }
