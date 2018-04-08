@@ -13,7 +13,7 @@ public class DogAnimator : MonoBehaviour {
         gunOnSpine.gameObject.SetActive (true);
         gunInHand.gameObject.SetActive (false);
         myFov.OnOpponentVisible += OnFoxVisible;
-        Fox.instance.OnFoxKilled += KillFox;
+        
         m_agent = GetComponentInParent<NavMeshAgent> ();
         m_animator = GetComponent<Animator> ();
     }
@@ -21,12 +21,6 @@ public class DogAnimator : MonoBehaviour {
     private void OnFoxVisible (FovTarget arg1, FovTarget arg2) {
         if (_gunAnimation == null) {
             _gunAnimation = StartCoroutine (AnimateGun ());
-        }
-    }
-
-    private void KillFox () {
-        if (_gunAnimation != null) {
-            gunSmoke.Play ();
         }
     }
 
@@ -47,7 +41,9 @@ public class DogAnimator : MonoBehaviour {
         gunOnSpine.gameObject.SetActive (false);
         gunInHand.gameObject.SetActive (true);
 
-        yield return new WaitForSeconds (1f);
+        yield return new WaitForSeconds(0.25f);
+        gunSmoke.Play();
+        yield return new WaitForSeconds (0.75f);
 
         gunOnSpine.gameObject.SetActive (true);
         gunInHand.gameObject.SetActive (false);
