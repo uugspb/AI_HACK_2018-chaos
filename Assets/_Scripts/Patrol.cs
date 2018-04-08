@@ -12,6 +12,7 @@ public class Patrol : MonoBehaviour
     private NavMeshAgent agent;
     private int nextPointIndex = 1;
     [SerializeField] private FovSource _me;
+    [SerializeField] private GameObject _protector;
 
     void Start()
     {
@@ -78,5 +79,10 @@ public class Patrol : MonoBehaviour
         }
         */
 
+    }
+
+    public void DisableProtector()
+    {
+        _protector.active = false;
     }
 }

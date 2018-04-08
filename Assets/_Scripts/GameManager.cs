@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameMode mode = GameMode.editor;
     private float _savedTimescale = 1;
+    [SerializeField] private GameObject _editor;
 
     [EditorButton]
     public void SwitchMode()
@@ -15,11 +16,14 @@ public class GameManager : Singleton<GameManager>
             case GameMode.editor:
                 mode = GameMode.play;
                 PlayMode();
+                _editor.active = false;
+                ChangeTimeScale(1.0f);
                 break;
             case GameMode.play:
                 mode = GameMode.editor;
                 ChangeTimeScale(1.0f);
                 EditorMode();
+                _editor.active = true;
                 break;
         }
     }
