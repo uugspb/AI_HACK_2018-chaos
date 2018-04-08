@@ -20,6 +20,7 @@ public class Fox : Singleton<Fox> {
     private Vector3 _defaultStartPosition;
 
     void Start () {
+        NavMesh.pathfindingIterationsPerFrame = 500;
         //if(_startPositions == null || _startPositions.Count == 0)
         //{
         _defaultStartPosition = transform.position;
