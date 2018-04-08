@@ -83,6 +83,7 @@ public class Fox : Singleton<Fox>
         {
             if(OnFoxGoalReached != null)
             {
+                GameManager.instance.ChangeTimeScale(1.0f);
                 OnFoxGoalReached.Invoke();
             }
         }

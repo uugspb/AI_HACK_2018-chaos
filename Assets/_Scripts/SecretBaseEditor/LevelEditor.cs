@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class LevelEditor : MonoBehaviour
 {
      [SerializeField] private GameObject _cameraPrefab;
+     [SerializeField] private List<GameObject> _spawnProtectors;
 
      public delegate void LevelConfigChanged(InputLevelConfig config, int sentinelsCount, int camerasCount);
 
@@ -48,6 +49,23 @@ public class LevelEditor : MonoBehaviour
      private void Awake()
      {
           _currentInputConfig = InputLevelConfig.DefaultConfig();
+     }
+
+     private void OnEnable()
+     {
+          foreach (var spawnProtector in _spawnProtectors)
+          {
+               spawnProtector.active = true;
+          }
+     }
+
+     private void OnDisable()
+     {
+          foreach (var spawnProtector in _spawnProtectors)
+          {
+               if(spawnProtector != null)
+                    spawnProtector.active = false;
+          }
      }
 
      private void Start()

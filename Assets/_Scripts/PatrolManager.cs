@@ -85,7 +85,11 @@ public class PatrolManager : Singleton<PatrolManager>
 
     public void StartPatrol()
     {
-        patrols.ForEach(x => x.StartAgentPatrol());
+        patrols.ForEach(x =>
+        {
+            x.StartAgentPatrol();
+            x.DisableProtector();
+        });
     }
 
     public void StopPatrol()
