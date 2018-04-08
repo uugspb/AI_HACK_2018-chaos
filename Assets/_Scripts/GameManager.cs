@@ -13,11 +13,11 @@ public class GameManager : Singleton<GameManager>
     {
         switch (mode)
         {
-            case GameMode.editor:
-                mode = GameMode.play;
-                PlayMode();
-                _editor.active = false;
-                ChangeTimeScale(1.0f);
+		case GameMode.editor:
+			mode = GameMode.play;
+			PlayMode ();
+			_editor.active = false;
+			ChangeTimeScale (1.0f);
                 break;
             case GameMode.play:
                 mode = GameMode.editor;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.84223294, a: 1}
+  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.8422328, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6058,7 +6058,10 @@ MonoBehaviour:
   cam: {fileID: 558522510}
   _flagPrefab: {fileID: 1484146976751668, guid: f579be093c241411283918f27466bb72,
     type: 2}
+  _protectorPrefab: {fileID: 1667144271940708, guid: d5ff3f61a547ba748ae0371dc6ffc894,
+    type: 2}
   patrols: []
+  protectors: []
 --- !u!4 &893294039
 Transform:
   m_ObjectHideFlags: 0
@@ -7843,6 +7846,11 @@ Prefab:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 558522510}
+    - target: {fileID: 224940021902202504, guid: 88c58e1d977f246828a41168cd90eb28,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88c58e1d977f246828a41168cd90eb28, type: 2}
   m_IsPrefabParent: 0
@@ -12589,7 +12597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1755708691
 Transform:
   m_ObjectHideFlags: 0
@@ -14214,7 +14222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1977807541
 Transform:
   m_ObjectHideFlags: 0
@@ -14864,10 +14872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d0aa290e0c754d88a88a1b3ac279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPositions:
-  - {fileID: 1011267454}
-  - {fileID: 1977807541}
-  - {fileID: 1755708691}
   _spawnParticles: {fileID: 0}
   _shot: {fileID: 0}
   _spawn: {fileID: 0}
