@@ -39,7 +39,7 @@ public class UIHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_levelEditor.OnConfigChanged += UpdateUI;
+		PatrolManager.instance.OnPatrolCountChanged += UpdateUI;
 		_levelEditor.OnInfoChanged += UpdateInfo;
 		_addSentinel.onClick.AddListener (delegate {
 			_levelEditor.AddSentinel ();
@@ -108,16 +108,16 @@ public class UIHandler : MonoBehaviour {
 	}
 
 	private void OnDestroy () {
-		_levelEditor.OnConfigChanged -= UpdateUI;
+		if(PatrolManager.instance != null)
+			PatrolManager.instance.OnPatrolCountChanged -= UpdateUI;
 		_levelEditor.OnInfoChanged -= UpdateInfo;
 	}
 
-	private void UpdateUI (InputLevelConfig inputConfig, int sentinelsCount, int cameraCount) {
-		_cameraText.text = string.Format (CameraText, inputConfig.MaxCameras - cameraCount);
-		_sentinelText.text = string.Format (SentinelText, inputConfig.MaxSentinels - sentinelsCount);
+	private void UpdateUI (int sentinelsCount) {
+		//_cameraText.text = string.Format (CameraText, inputConfig.MaxCameras - cameraCount);
+		_sentinelText.text = string.Format (SentinelText, sentinelsCount);
 
-		_addCamera.enabled = cameraCount < inputConfig.MaxCameras;
-		_addSentinel.enabled = sentinelsCount < inputConfig.MaxSentinels;
+		//_addCamera.enabled = cameraCount < inputConfig.MaxCameras;
 	}
 
 	private void UpdateInfo (string info) {
