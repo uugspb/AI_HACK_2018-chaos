@@ -1538,7 +1538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d0aa290e0c754d88a88a1b3ac279b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPositions: []
+  _startPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   target: {fileID: 0}
   foxSurface: {fileID: 0}
 --- !u!114 &114985447514683600
