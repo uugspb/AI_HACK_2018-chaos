@@ -6058,7 +6058,8 @@ MonoBehaviour:
   cam: {fileID: 558522510}
   _flagPrefab: {fileID: 1484146976751668, guid: f579be093c241411283918f27466bb72,
     type: 2}
-  _protectorPrefab: {fileID: 0}
+  _protectorPrefab: {fileID: 1667144271940708, guid: d5ff3f61a547ba748ae0371dc6ffc894,
+    type: 2}
   patrols: []
   protectors: []
 --- !u!4 &893294039
