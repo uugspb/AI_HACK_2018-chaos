@@ -1845,7 +1845,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273252119}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -3395,7 +3395,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 549876465}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -4991,7 +4991,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 696514638}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -14911,6 +14911,8 @@ MonoBehaviour:
   - {fileID: 1011267454}
   - {fileID: 1977807541}
   - {fileID: 1755708691}
+  _spawnParticles: {fileID: 0}
+  _shot: {fileID: 0}
   target: {fileID: 1009607478}
   foxSurface: {fileID: 0}
 --- !u!195 &2093031003
