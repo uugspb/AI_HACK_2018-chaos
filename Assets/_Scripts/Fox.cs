@@ -44,15 +44,31 @@ public class Fox : Singleton<Fox>
     [EditorButton]
     public void Kill()
     {
-        if(OnFoxKilled != null)
+        if(_killRoutine == null)
+        {
+            _killRoutine = StartCoroutine(KillDelayed());
+        }
+    }
+
+    private Coroutine _killRoutine;
+
+    private IEnumerator KillDelayed()
+    {        
+        yield return new WaitForSeconds(1f);
+
+        if (OnFoxKilled != null)
         {
             OnFoxKilled.Invoke();
         }
 
+        PatrolManager.instance.StopPatrol();
+        PatrolManager.instance.StartPatrol();
         DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
         agent.Warp(GetRandomPosition());
         _spawnParticles.Play();
         agent.SetDestination(target.position);
+
+        _killRoutine = null;
     }
 [EditorButton]
     public void ResetDestination()
@@ -82,7 +98,7 @@ public class Fox : Singleton<Fox>
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, target.transform.position) < 2f)
+        if(_killRoutine == null && Vector3.Distance(transform.position, target.transform.position) < 2f)
         {
             if(OnFoxGoalReached != null)
             {

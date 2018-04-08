@@ -42,8 +42,6 @@ public class GameManager : Singleton<GameManager>
     public void KillFox()
     {
         Fox.instance.Kill();
-        PatrolManager.instance.StopPatrol();
-        PatrolManager.instance.StartPatrol();
     }
 
     public void SetPaused(bool paused)
