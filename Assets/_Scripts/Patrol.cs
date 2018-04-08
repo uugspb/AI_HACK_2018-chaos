@@ -5,8 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Patrol : MonoBehaviour
-{
+public class Patrol : MonoBehaviour {
     public List<Vector3> points;
     private LineRenderer line;
     private NavMeshAgent agent;
@@ -14,63 +13,56 @@ public class Patrol : MonoBehaviour
     [SerializeField] private FovSource _me;
     [SerializeField] private GameObject _protector;
 
-    void Start()
-    {
-        _me = GetComponentInChildren<FovSource>();
-        _me.OnOpponentVisible += ActivateAlarm ;
-        agent = GetComponent<NavMeshAgent>();
-        line = GetComponent<LineRenderer>();
+    void Start () {
+        _me = GetComponentInChildren<FovSource> ();
+        _me.OnOpponentVisible += ActivateAlarm;
+        agent = GetComponent<NavMeshAgent> ();
+        line = GetComponent<LineRenderer> ();
         line.enabled = true;
+        points.Add (points[0]);
         line.positionCount = points.Count;
-        line.SetPositions(points.Select(x=>x+Vector3.up).ToArray());
+        line.SetPositions (points.Select (x => x + Vector3.up).ToArray ());
     }
 
     private bool foxkilled = false;
-    public void ActivateAlarm(FovTarget first, FovTarget second)
-    {
-       //AlarmScript.instance.AlarmActivate();
-        if (!foxkilled)
-        {
-            GameManager.instance.KillFox();
+    public void ActivateAlarm (FovTarget first, FovTarget second) {
+        //AlarmScript.instance.AlarmActivate();
+        if (!foxkilled) {
+            GameManager.instance.KillFox ();
             foxkilled = true;
         }
 
-        print("ALARM");
+        print ("ALARM");
     }
 
-    public void StartAgentPatrol()
-    {
+    public void StartAgentPatrol () {
         line.enabled = false;
         agent.isStopped = false;
-        StartCoroutine(ResetFoxKilledDelay());
-        agent.SetDestination(points[nextPointIndex % 3]);
+        StartCoroutine (ResetFoxKilledDelay ());
+        agent.SetDestination (points[nextPointIndex % 3]);
     }
 
-    public void StopAgentPatrol()
-    {
-        agent.Warp(points[0]);
+    public void StopAgentPatrol () {
+        agent.Warp (points[0]);
         agent.speed = 3.5f;
         line.enabled = true;
         nextPointIndex = 1;
         agent.isStopped = true;
-        StartCoroutine(ResetFoxKilledDelay());
+        StartCoroutine (ResetFoxKilledDelay ());
 
     }
 
-    IEnumerator ResetFoxKilledDelay()
-    {
-        yield return new WaitForSeconds(0.5f);
+    IEnumerator ResetFoxKilledDelay () {
+        yield return new WaitForSeconds (0.5f);
         foxkilled = false;
     }
-    void Update()
-    {
-        if (Vector3.Distance(transform.position, points[nextPointIndex % 3]) < 1.5f)
-        {
+    void Update () {
+        if (Vector3.Distance (transform.position, points[nextPointIndex % 3]) < 1.5f) {
             nextPointIndex++;
-            agent.SetDestination(points[nextPointIndex % 3]);
+            agent.SetDestination (points[nextPointIndex % 3]);
         }
 
-		/*
+        /*
         if (AlarmScript.instance.isAlarm)
             agent.speed = 6f;
         else
@@ -81,8 +73,7 @@ public class Patrol : MonoBehaviour
 
     }
 
-    public void DisableProtector()
-    {
+    public void DisableProtector () {
         _protector.active = false;
     }
 }
