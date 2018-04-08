@@ -80,7 +80,7 @@ public class PatrolManager : Singleton<PatrolManager>
             }
         }
 
-        return true;
+        return true; ;
     }
 
     public void StartPatrol()
