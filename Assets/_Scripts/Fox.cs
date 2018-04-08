@@ -13,7 +13,7 @@ public class Fox : Singleton<Fox>
     [SerializeField] private ParticleSystem _spawnParticles;
     [SerializeField] private AudioSource _shot;
     [SerializeField] private AudioSource _spawn;
-
+    [SerializeField] private FoxAnimator _foxAnim;
     public Transform target;
     public NavMeshSurface foxSurface;
     private NavMeshAgent agent;
@@ -55,8 +55,14 @@ public class Fox : Singleton<Fox>
 
     private Coroutine _killRoutine;
 
+    public bool PlayKillAnim;
+
+    public bool IsKillInProgress;
+
     private IEnumerator KillDelayed()
-    {        
+    {
+        PlayKillAnim = true;
+        IsKillInProgress = true;
         yield return new WaitForSeconds(1f);
 
         if (OnFoxKilled != null)
@@ -72,6 +78,8 @@ public class Fox : Singleton<Fox>
         agent.SetDestination(target.position);
         _spawn.Play();
         _killRoutine = null;
+        IsKillInProgress = false;
+        _foxAnim.ResetAnim();
     }
 [EditorButton]
     public void ResetDestination()

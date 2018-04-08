@@ -3421,6 +3421,7 @@ GameObject:
   - component: {fileID: 558522508}
   - component: {fileID: 558522512}
   - component: {fileID: 558522513}
+  - component: {fileID: 558522514}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3517,6 +3518,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19eb3f50c71cc4df899889478ffa7b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &558522514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558522507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 6aa9f248b6911044aaaaf2d788559f34, type: 2}
 --- !u!1001 &567747539
 Prefab:
   m_ObjectHideFlags: 0
@@ -14951,6 +14964,7 @@ MonoBehaviour:
   - {fileID: 1755708691}
   _spawnParticles: {fileID: 0}
   _shot: {fileID: 0}
+  _spawn: {fileID: 0}
   target: {fileID: 1009607478}
   foxSurface: {fileID: 0}
 --- !u!195 &2093031003
