@@ -29,10 +29,10 @@ public class UIHandler : MonoBehaviour
 	private const string SentinelText = "Sentinels left: {0}";
 	private const float Speed = 5.0f;
 	
-	private Vector3 editorPosition = new Vector3(0, 10, 0);
-	private Vector3 gamePosition = new Vector3(-9.12f, 8.66f, -9.73f);
-	private Quaternion editorRotation = Quaternion.Euler(90, 0, 0);
-	private Quaternion gameRotation = Quaternion.Euler(30, 45, 0);
+    private Vector3 editorPosition = new Vector3(0, 100, 0);
+    private Vector3 gamePosition = new Vector3(-51.9f, 43.6f, -52.5f);
+    private Quaternion editorRotation = Quaternion.Euler(90, 0, 0);
+    private Quaternion gameRotation = Quaternion.Euler(30, 45, 0);
 	private float gameCameraSize = 9.66f;
 	private float editorCameraSize = 19f;
 	
