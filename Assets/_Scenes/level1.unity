@@ -4517,6 +4517,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114904814752254176, guid: 7d4e5a6d165f5b243a44b1b67c32fd78,
         type: 2}
+      propertyPath: _startPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1011267454}
+    - target: {fileID: 114904814752254176, guid: 7d4e5a6d165f5b243a44b1b67c32fd78,
+        type: 2}
+      propertyPath: _startPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1977807541}
+    - target: {fileID: 114904814752254176, guid: 7d4e5a6d165f5b243a44b1b67c32fd78,
+        type: 2}
+      propertyPath: _startPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1755708691}
+    - target: {fileID: 114904814752254176, guid: 7d4e5a6d165f5b243a44b1b67c32fd78,
+        type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 1009607478}

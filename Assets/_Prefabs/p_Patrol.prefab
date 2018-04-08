@@ -1902,6 +1902,7 @@ MonoBehaviour:
   gunSmoke: {fileID: 198117012093375560}
   gunInHand: {fileID: 4607534977203204}
   gunOnSpine: {fileID: 4370583058397612}
+  myFov: {fileID: 114435713049718548}
 --- !u!114 &114435713049718548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2460,7 +2461,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1921700184
+  randomSeed: 157913921
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2550,7 +2551,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.5661765, g: 0.57033956, b: 0.57033956, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2612,7 +2613,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2

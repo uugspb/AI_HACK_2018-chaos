@@ -8,8 +8,10 @@ public class Fox : Singleton<Fox>
 {    
     public event Action OnFoxKilled;
     public event Action OnFoxGoalReached;
-
+    
     [SerializeField] private List<Transform> _startPositions;
+    [SerializeField] private ParticleSystem _spawnParticles;
+    [SerializeField] private AudioSource _shot;
 
     public Transform target;
     public NavMeshSurface foxSurface;
@@ -36,25 +38,44 @@ public class Fox : Singleton<Fox>
     public void StopWalking()
     {
         agent.Warp(GetRandomPosition());
+        _spawnParticles.Play();
         agent.isStopped = true;
     }
     
     [EditorButton]
     public void Kill()
     {
-        if(OnFoxKilled != null)
+        if(_killRoutine == null)
+        {
+            _shot.Play();
+            _killRoutine = StartCoroutine(KillDelayed());
+        }
+    }
+
+    private Coroutine _killRoutine;
+
+    private IEnumerator KillDelayed()
+    {        
+        yield return new WaitForSeconds(1f);
+
+        if (OnFoxKilled != null)
         {
             OnFoxKilled.Invoke();
         }
 
+        PatrolManager.instance.StopPatrol();
+        PatrolManager.instance.StartPatrol();
         DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
         agent.Warp(GetRandomPosition());
+        _spawnParticles.Play();
         agent.SetDestination(target.position);
+
+        _killRoutine = null;
     }
 [EditorButton]
     public void ResetDestination()
     {
-        agent.SetDestination(target.position);
+        agent.SetDestination(target.position);        
     }
 
     private Vector3 GetRandomPosition()
@@ -79,7 +100,7 @@ public class Fox : Singleton<Fox>
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, target.transform.position) < 2f)
+        if(_killRoutine == null && Vector3.Distance(transform.position, target.transform.position) < 2f)
         {
             if(OnFoxGoalReached != null)
             {
