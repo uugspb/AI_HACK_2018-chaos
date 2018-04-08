@@ -12,51 +12,53 @@ public class GameController : Singleton<GameController> {
 
     private float _timeCounter;
 
-    public int Score { get { return Mathf.RoundToInt(_timeCounter * _scoreScale); } }
+    public int Score { get { return Mathf.RoundToInt (_timeCounter * _scoreScale); } }
+    public int Seconds { get { return Mathf.RoundToInt (_timeCounter); } }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(this.gameObject);
+    private void Start () {
+        DontDestroyOnLoad (this.gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        LoadIntro();
+        LoadIntro ();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
-    {
-        if(scene.name == _play)
-        {
+    private void OnSceneLoaded (Scene scene, LoadSceneMode arg1) {
+        if (scene.name == _play) {
             Fox.instance.OnFoxGoalReached += OnGoalReached;
         }
     }
 
     [EditorButton]
-    public void LoadIntro()
-    {
-        SceneManager.LoadScene(_intro);
+    public void LoadIntro () {
+        SceneManager.LoadScene (_intro);
     }
 
     [EditorButton]
-    public void LoadPlay()
-    {
+    public void LoadPlay () {
         _timeCounter = 0;
-        SceneManager.LoadScene(_play);
+        SceneManager.LoadScene (_play);
+    }
+    float startTime = 0f;
+    public void StartTimer () {
+        startTime = Time.time;
+    }
+
+    public void StopTimer () {
+        _timeCounter = Time.time - startTime;
     }
 
     [EditorButton]
-    public void LoadScore()
-    {
-        SceneManager.LoadScene(_score);
+    public void LoadScore () {
+        StopTimer ();
+        SceneManager.LoadScene (_score);
     }
 
-    private void Update()
-    {
-        _timeCounter += Time.deltaTime;
+    private void Update () {
+        // _timeCounter += Time.deltaTime;
     }
 
-    private void OnGoalReached()
-    {
+    private void OnGoalReached () {
         Fox.instance.OnFoxGoalReached -= OnGoalReached;
-        LoadScore();
+        LoadScore ();
     }
 
 }
