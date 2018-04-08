@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class PatrolManager : Singleton<PatrolManager>
 {
-    public int maxPatrolAmount = 5;
+    public int MaxPatrolAmount = 5;
     public GameObject patrolPrefab;
     public Camera cam;
     [SerializeField] private GameObject _flagPrefab;
 	[SerializeField] private GameObject _protectorPrefab;
+	
+	public delegate void FreePatrolsCountChanged(int count);
+
+	public event FreePatrolsCountChanged OnPatrolCountChanged;
     
 
     public List<Patrol> patrols = new List<Patrol>();
@@ -22,20 +26,22 @@ public class PatrolManager : Singleton<PatrolManager>
     {
         line = GetComponent<LineRenderer>();
         line.enabled = false;
-		maxPatrolAmount = 5;
+		MaxPatrolAmount = 5;
     }
 
     [EditorButton]
     public void CreatePatrol()
     {
-		if (patrols.Count < maxPatrolAmount)
-        StartCoroutine(CreatePatrolCoroutine());
+	    if (OnPatrolCountChanged != null)
+	    {
+		    OnPatrolCountChanged(MaxPatrolAmount - patrols.Count);
+	    }
+		if (patrols.Count < MaxPatrolAmount)
+        	StartCoroutine(CreatePatrolCoroutine());
     }
 
     IEnumerator CreatePatrolCoroutine()
     {
-		
-        print("kek");
         List<Vector3> points = new List<Vector3>();
         List<GameObject> flags = new List<GameObject>();
         while (points.Count != 3)
@@ -44,7 +50,6 @@ public class PatrolManager : Singleton<PatrolManager>
             {
                 yield return null;
             }
-            print("kek1");
 
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +67,6 @@ public class PatrolManager : Singleton<PatrolManager>
 				protectorInstance.transform.position = hit.point;
 				protectors.Add(protectorInstance);
             }
-            print("kek2");
 
             line.enabled = true;
             yield return null;
@@ -139,6 +143,10 @@ public class PatrolManager : Singleton<PatrolManager>
     [EditorButton]
     public void ClearAllPatrols()
     {
+	    if (OnPatrolCountChanged != null)
+	    {
+		    OnPatrolCountChanged(MaxPatrolAmount);
+	    }
         patrols.ForEach(x => Destroy(x.gameObject));
         patrols = new List<Patrol>();
 

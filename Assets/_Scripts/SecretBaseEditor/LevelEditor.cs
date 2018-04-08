@@ -10,10 +10,6 @@ public class LevelEditor : MonoBehaviour
      [SerializeField] private GameObject _cameraPrefab;
      [SerializeField] private List<GameObject> _spawnProtectors;
 
-     public delegate void LevelConfigChanged(InputLevelConfig config, int sentinelsCount, int camerasCount);
-
-     public event LevelConfigChanged OnConfigChanged;
-
      public delegate void InfoChanged(string info);
 
      public event InfoChanged OnInfoChanged;
@@ -25,8 +21,7 @@ public class LevelEditor : MonoBehaviour
      private const float WheelCoef = 40.0f;
 
      private List<GameObject> _cameras = new List<GameObject>();
-     private int _patrolCount = 0;
-
+     
      public enum EditorState
      {
           Normal,
@@ -37,14 +32,6 @@ public class LevelEditor : MonoBehaviour
      }
 
      private EditorState _currentState = EditorState.Normal;
-
-     private void Refresh()
-     {
-          if (OnConfigChanged != null)
-          {
-               OnConfigChanged(_currentInputConfig, _patrolCount, _cameras.Count);
-          }
-     }
 
      private void Awake()
      {
@@ -66,23 +53,6 @@ public class LevelEditor : MonoBehaviour
           {
                if(spawnProtector != null)
                     spawnProtector.active = false;
-          }
-     }
-
-     private void Start()
-     {
-          StartCoroutine(WaitForSubscribers());
-     }
-
-     private IEnumerator WaitForSubscribers()
-     {
-          var updated = false;
-          while (!updated)
-          {
-               Refresh();
-               if (OnConfigChanged != null)
-                    updated = true;
-               yield return new WaitForSeconds(0.1f);
           }
      }
 
@@ -110,15 +80,12 @@ public class LevelEditor : MonoBehaviour
                     if (PatrolManager.instance.CheckCoordinatesForNewPatrol(position))
                     {
                          PatrolManager.instance.CreatePatrol();
-                         _patrolCount++;
                          SetInfo("");
-                         Refresh();
                          _currentState = EditorState.Normal;
                     }
                     else
                     {
                          SetInfo("Too close to other object");
-                         Refresh();
                     }
                }
                    
@@ -131,8 +98,7 @@ public class LevelEditor : MonoBehaviour
                          instance.transform.position = position;
                          _currentState = EditorState.RotateCamera;
                          SetInfo("Configure camera rotation via mouse wheel");
-                         _cameras.Add(instance);
-                         Refresh();    
+                         _cameras.Add(instance); 
                     }
                     else
                     {
@@ -159,7 +125,7 @@ public class LevelEditor : MonoBehaviour
                     this._currentState = LevelEditor.EditorState.Normal;
                     this.SetInfo("");
                }
-                    break;
+               break;
                default:
                     throw new ArgumentOutOfRangeException();
           }
@@ -201,8 +167,6 @@ public class LevelEditor : MonoBehaviour
      {
           PatrolManager.instance.ClearAllPatrols();
           _currentState = EditorState.Erase;
-          _patrolCount = 0;
-          Refresh();
           SetInfo("");
      }
 
