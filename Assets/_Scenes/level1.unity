@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.8422328, a: 1}
+  m_IndirectSpecularColor: {r: 0.66615283, g: 0.7530068, b: 0.84223294, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6052,7 +6052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627ba1eccc676574e99d3fb931d72401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPatrolAmount: 0
+  MaxPatrolAmount: 5
   patrolPrefab: {fileID: 1326232605225924, guid: c5d56062b396d7c4bae55d42d73454a0,
     type: 2}
   cam: {fileID: 558522510}
