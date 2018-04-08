@@ -8,8 +8,9 @@ public class Fox : Singleton<Fox>
 {    
     public event Action OnFoxKilled;
     public event Action OnFoxGoalReached;
-
+    
     [SerializeField] private List<Transform> _startPositions;
+    [SerializeField] private ParticleSystem _spawnParticles;
 
     public Transform target;
     public NavMeshSurface foxSurface;
@@ -36,6 +37,7 @@ public class Fox : Singleton<Fox>
     public void StopWalking()
     {
         agent.Warp(GetRandomPosition());
+        _spawnParticles.Play();
         agent.isStopped = true;
     }
     
@@ -49,12 +51,13 @@ public class Fox : Singleton<Fox>
 
         DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
         agent.Warp(GetRandomPosition());
+        _spawnParticles.Play();
         agent.SetDestination(target.position);
     }
 [EditorButton]
     public void ResetDestination()
     {
-        agent.SetDestination(target.position);
+        agent.SetDestination(target.position);        
     }
 
     private Vector3 GetRandomPosition()
