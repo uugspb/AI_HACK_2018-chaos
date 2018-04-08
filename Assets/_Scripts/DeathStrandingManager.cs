@@ -9,6 +9,7 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager> {
     public float stayingTime = 3f; // сколько держится modifieer
     public GameObject modifierPrefab;
     public NavMeshSurface foxSurface;
+    int levelsCount = 10;
 
     private float startingTime;
     private List<KillingPoint> killingPoints = new List<KillingPoint> ();
@@ -34,7 +35,17 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager> {
     }
 
     public void SetKillingPoint (Vector3 position) {
-        killingPoints.Add (new KillingPoint (Time.time - startingTime, position));
+        int level = 0;
+        for (int i = killingPoints.Count - 1; i >= 0; i--) {
+            var point = killingPoints[i];
+            if (Vector3.Distance (point.position, position) < 1f && point.modifier != null) {
+                level = Mathf.Max (level, Mathf.Min (levelsCount, point.level + 1));
+                killingPoints.RemoveAt (i);
+            }
+        }
+        float descreetDeltaTime = 0.25f;
+        float descreetedTime = Mathf.RoundToInt ((Time.time - startingTime) / descreetDeltaTime) * descreetDeltaTime;
+        killingPoints.Add (new KillingPoint (descreetedTime, position, level));
         startingTime = Time.time;
         StopAllCoroutines ();
         ClearAllModiriers ();
@@ -48,6 +59,8 @@ public class DeathStrandingManager : Singleton<DeathStrandingManager> {
                 if (Time.time - startingTime >= killingPoint.time - predictionTime && !killingPoint.created) {
                     killingPoint.created = true;
                     killingPoint.modifier = Instantiate (modifierPrefab, killingPoint.position, Quaternion.identity);
+                    var modifier = killingPoint.modifier.GetComponent<NavMeshModifierVolume> ();
+                    modifier.area += killingPoint.level;
                     // foxSurface.BuildNavMesh ();
                     // yield return null;
                     // Fox.instance.ResetDestination ();
@@ -93,9 +106,11 @@ public class KillingPoint {
     public bool created;
     public bool destoyed;
     public GameObject modifier;
+    public int level;
 
-    public KillingPoint (float time, Vector3 position) {
+    public KillingPoint (float time, Vector3 position, int level) {
         this.time = time;
         this.position = position;
+        this.level = level;
     }
 }

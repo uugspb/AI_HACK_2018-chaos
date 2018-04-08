@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Fox : Singleton<Fox>
-{    
+public class Fox : Singleton<Fox> {
     public event Action OnFoxKilled;
     public event Action OnFoxGoalReached;
-    
+
     //[SerializeField] private List<Transform> _startPositions;
     [SerializeField] private ParticleSystem _spawnParticles;
     [SerializeField] private AudioSource _shot;
@@ -20,37 +19,32 @@ public class Fox : Singleton<Fox>
     //private int _lastSpawnPointIndex = -1;
     private Vector3 _defaultStartPosition;
 
-
-    void Start()
-    {
+    void Start () {
+        NavMesh.pathfindingIterationsPerFrame = 200;
         //if(_startPositions == null || _startPositions.Count == 0)
         //{
-            _defaultStartPosition = transform.position;
+        _defaultStartPosition = transform.position;
         //}
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent> ();
     }
 
-    public void StartWalking()
-    {
+    public void StartWalking () {
         agent.isStopped = false;
-        agent.SetDestination(target.position);
+        agent.SetDestination (target.position);
     }
 
-    public void StopWalking()
-    {
+    public void StopWalking () {
         //agent.Warp(GetRandomPosition());
-		agent.Warp(_defaultStartPosition);
-        _spawnParticles.Play();
+        agent.Warp (_defaultStartPosition);
+        _spawnParticles.Play ();
         agent.isStopped = true;
     }
-    
+
     [EditorButton]
-    public void Kill()
-    {
-        if(_killRoutine == null)
-        {
-            _shot.Play();
-            _killRoutine = StartCoroutine(KillDelayed());
+    public void Kill () {
+        if (_killRoutine == null) {
+            _shot.Play ();
+            _killRoutine = StartCoroutine (KillDelayed ());
         }
     }
 
@@ -60,36 +54,36 @@ public class Fox : Singleton<Fox>
 
     public bool IsKillInProgress;
 
-    private IEnumerator KillDelayed()
-    {
+    private IEnumerator KillDelayed () {
         PlayKillAnim = true;
         IsKillInProgress = true;
-        yield return new WaitForSeconds(1f);
+        agent.enabled = false;
+        yield return new WaitForSeconds (1f);
 
-        if (OnFoxKilled != null)
-        {
-            OnFoxKilled.Invoke();
+        if (OnFoxKilled != null) {
+            OnFoxKilled.Invoke ();
         }
 
-        PatrolManager.instance.StopPatrol();
-        PatrolManager.instance.StartPatrol();
-        DeathStrandingManager.instance.SetKillingPoint(transform.position - Vector3.up);
+        PatrolManager.instance.StopPatrol ();
+        PatrolManager.instance.StartPatrol ();
+        DeathStrandingManager.instance.SetKillingPoint (transform.position - Vector3.up);
         //agent.Warp(GetRandomPosition());
-		agent.Warp(_defaultStartPosition);
-        _spawnParticles.Play();
-        agent.SetDestination(target.position);
-        _spawn.Play();
+        agent.enabled = true;
+        agent.Warp (_defaultStartPosition);
+        _spawnParticles.Play ();
+        agent.SetDestination (target.position);
+        _spawn.Play ();
         _killRoutine = null;
         IsKillInProgress = false;
-        _foxAnim.ResetAnim();
-    }
-[EditorButton]
-    public void ResetDestination()
-    {
-        agent.SetDestination(target.position);        
+        _foxAnim.ResetAnim ();
     }
 
-	/*
+    [EditorButton]
+    public void ResetDestination () {
+        agent.SetDestination (target.position);
+    }
+
+    /*
     private Vector3 GetRandomPosition()
     {
         if(_startPositions.Count == 0)
@@ -111,14 +105,11 @@ public class Fox : Singleton<Fox>
     }
     */
 
-    void Update()
-    {
-        if(_killRoutine == null && Vector3.Distance(transform.position, target.transform.position) < 2f)
-        {
-            if(OnFoxGoalReached != null)
-            {
-                GameManager.instance.ChangeTimeScale(1.0f);
-                OnFoxGoalReached.Invoke();
+    void Update () {
+        if (_killRoutine == null && Vector3.Distance (transform.position, target.transform.position) < 2f) {
+            if (OnFoxGoalReached != null) {
+                GameManager.instance.ChangeTimeScale (1.0f);
+                OnFoxGoalReached.Invoke ();
             }
         }
     }
