@@ -65,6 +65,7 @@ public class UIHandler : MonoBehaviour {
 			// _timeSlider.gameObject.active = true;
 			_timeScaleToggle.gameObject.active = true;
 			_timeLabel.gameObject.active = true;
+			GameController.instance.StartTimer ();
 			StartCoroutine (ChangeCameraPos ());
 		});
 		_openEditor.onClick.AddListener (delegate {

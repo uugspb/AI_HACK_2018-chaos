@@ -274,6 +274,7 @@ MonoBehaviour:
   _score: {fileID: 888016274}
   _scoreDelay: 0.05
   _scoreStep: 7
+  _text: {fileID: 1623566449}
 --- !u!1001 &158226347
 Prefab:
   m_ObjectHideFlags: 0
@@ -1762,7 +1763,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Time:'
 --- !u!222 &1221058532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1948,7 +1949,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -171.9, y: -76.3}
-  m_SizeDelta: {x: 352.73, y: 188.79999}
+  m_SizeDelta: {x: 493.5, y: 188.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623566449
 MonoBehaviour:
