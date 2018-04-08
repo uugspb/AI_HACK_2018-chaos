@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PatrolManager : Singleton<PatrolManager>
 {
-    public int maxPatrolAmount;
+    public int maxPatrolAmount = 5;
     public GameObject patrolPrefab;
     public Camera cam;
     [SerializeField] private GameObject _flagPrefab;
@@ -22,16 +22,19 @@ public class PatrolManager : Singleton<PatrolManager>
     {
         line = GetComponent<LineRenderer>();
         line.enabled = false;
+		maxPatrolAmount = 5;
     }
 
     [EditorButton]
     public void CreatePatrol()
     {
+		if (patrols.Count < maxPatrolAmount)
         StartCoroutine(CreatePatrolCoroutine());
     }
 
     IEnumerator CreatePatrolCoroutine()
     {
+		
         print("kek");
         List<Vector3> points = new List<Vector3>();
         List<GameObject> flags = new List<GameObject>();
@@ -74,6 +77,8 @@ public class PatrolManager : Singleton<PatrolManager>
         {
             Destroy(flag.gameObject);
         }
+
+		CreatePatrol ();
     }
 
     public bool CheckCoordinatesForNewPatrol(Vector3 coordinate)
@@ -91,14 +96,16 @@ public class PatrolManager : Singleton<PatrolManager>
 
     public void StartPatrol()
     {
+		DisableProtectors ();
         patrols.ForEach(x =>
         {
             x.StartAgentPatrol();
             x.DisableProtector();
         });
+		
     }
 
-	public void DisableProtectors ()
+	public void DestroyProtectors ()
 	{
 		foreach (var protect in protectors)
 		{
@@ -107,9 +114,26 @@ public class PatrolManager : Singleton<PatrolManager>
 		protectors.Clear ();
 	}
 
+	private void DisableProtectors()
+	{
+		foreach (var protect in protectors)
+		{
+			protect.gameObject.SetActive (false);;
+		}
+	}
+
+	private void EnableProtectors()
+	{
+		foreach (var protect in protectors)
+		{
+			protect.gameObject.SetActive (false);;
+		}
+	}
+
     public void StopPatrol()
     {
         patrols.ForEach(x => x.StopAgentPatrol());
+		EnableProtectors ();
     }
 
     [EditorButton]
@@ -118,6 +142,6 @@ public class PatrolManager : Singleton<PatrolManager>
         patrols.ForEach(x => Destroy(x.gameObject));
         patrols = new List<Patrol>();
 
-		DisableProtectors ();
+		DestroyProtectors ();
     }
 }
